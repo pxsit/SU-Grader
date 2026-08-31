@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int n,m;
+int n, m;
 char str[1000001];
 int arr[1000000];
 int array[1000000];
@@ -12,7 +12,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         arr[i] = str[i] - 'A';
-    }		 
+    }
     for (int j = 30; j >= 0; j--) {
         if (m & (1 << j)) {
             for (int i = 0; i < n; i++) {
@@ -33,4 +33,3 @@ int main() {
 
     return 0;
 }
-

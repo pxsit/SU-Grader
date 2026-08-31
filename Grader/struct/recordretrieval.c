@@ -18,7 +18,7 @@ int main() {
         scanf("%s %s %s %d", students[i].id, students[i].name, students[i].surname, &students[i].year);
     }
     scanf("%d", &Y);
- 
+
     int found = 0;
     for (i = 0; i < N; i++) {
         if (students[i].year == Y) {

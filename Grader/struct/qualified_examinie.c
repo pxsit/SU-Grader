@@ -30,7 +30,6 @@ int main() {
             printf("%s\n", students[i].id);
         }
     }
-    
 
     return 0;
 }

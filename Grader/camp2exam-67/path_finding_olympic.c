@@ -63,7 +63,7 @@ int main() {
                 }
             }
         } else {
-            if (r1 == r2) { 
+            if (r1 == r2) {
                 if (c1 < c2) {
                     for (int j = c1 + 1; j <= c2; j++) {
                         map[r1][j] = '>';

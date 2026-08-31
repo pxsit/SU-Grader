@@ -4,37 +4,37 @@
 int main() {
     char pattern[1024];
     int n;
-    
+
     scanf("%s", pattern);
     scanf("%d", &n);
-    
+
     char words[n][1024];
-    
+
     for (int i = 0; i < n; i++) {
         scanf("%s", words[i]);
     }
 
     char prefix[1024] = {0}, suffix[1024] = {0};
     int starPos = -1;
-    
+
     for (int i = 0; i < strlen(pattern); i++) {
         if (pattern[i] == '*') {
             starPos = i;
             break;
         }
     }
-    
+
     if (starPos != -1) {
         strncpy(prefix, pattern, starPos);
         strcpy(suffix, &pattern[starPos + 1]);
     }
 
     for (int i = 0; i < n; i++) {
-        char* word = words[i];
+        char *word = words[i];
         int wordLen = strlen(word);
         int prefixLen = strlen(prefix);
         int suffixLen = strlen(suffix);
-        
+
         if (starPos == 0) {
             if (strncmp(&word[wordLen - suffixLen], suffix, suffixLen) == 0) {
                 printf("T ");
@@ -54,15 +54,14 @@ int main() {
                     }
                 }
             }
-        } 
-        else if (starPos == strlen(pattern) - 1) {
+        } else if (starPos == strlen(pattern) - 1) {
             if (strncmp(word, prefix, prefixLen) == 0) {
                 printf("T ");
                 for (int j = prefixLen; j < wordLen; j++) {
                     printf("%c", word[j]);
                 }
                 if (wordLen == prefixLen) {
-                    printf("-"); 
+                    printf("-");
                 }
                 printf("\n");
             } else {
@@ -74,9 +73,8 @@ int main() {
                     }
                 }
             }
-        }
-        else {
-            if (strncmp(word, prefix, prefixLen) == 0 && 
+        } else {
+            if (strncmp(word, prefix, prefixLen) == 0 &&
                 strncmp(&word[wordLen - suffixLen], suffix, suffixLen) == 0) {
                 printf("T ");
                 for (int j = prefixLen; j < wordLen - suffixLen; j++) {
@@ -107,6 +105,6 @@ int main() {
             }
         }
     }
-    
+
     return 0;
 }
