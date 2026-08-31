@@ -1,24 +1,24 @@
-#include <stdio.h>
 #include <limits.h>
+#include <stdio.h>
 
-int main(){
+int main() {
     int n;
-    scanf("%d",&n);
-    long long int sum = 0,max,min;
-    for(int i=0;i<n;i++){
+    scanf("%d", &n);
+    long long int sum = 0, max, min;
+    for (int i = 0; i < n; i++) {
         long long int x;
-        scanf("%lld",&x);
+        scanf("%lld", &x);
         sum += x;
-        if(i==0){
+        if (i == 0) {
             max = x;
             min = x;
         }
-        if(x>max){
+        if (x > max) {
             max = x;
         }
-        if(x<min){
+        if (x < min) {
             min = x;
         }
     }
-    printf("%lld %.2lf",max-min,(double)sum/n);
+    printf("%lld %.2lf", max - min, (double)sum / n);
 }

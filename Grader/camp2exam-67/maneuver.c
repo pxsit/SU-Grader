@@ -45,12 +45,14 @@ int main() {
 
     for (long long i = 0; i < bestSize2; i++) {
         printf("%d", bestSet2[i]);
-        if (i < bestSize2 - 1) printf(" ");
+        if (i < bestSize2 - 1)
+            printf(" ");
     }
     printf("\n");
     for (long long i = 0; i < bestSize1; i++) {
         printf("%d", bestSet1[i]);
-        if (i < bestSize1 - 1) printf(" ");
+        if (i < bestSize1 - 1)
+            printf(" ");
     }
 
     return 0;

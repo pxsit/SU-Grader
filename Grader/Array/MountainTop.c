@@ -13,7 +13,7 @@ int main() {
             scanf("%d", &height[i][j]);
         }
     }
-    
+
     for (int i = 1; i < N - 1; i++) {
         for (int j = 1; j < N - 1; j++) {
             int is_peak = 1;
@@ -24,12 +24,13 @@ int main() {
                         break;
                     }
                 }
-                if (!is_peak) break;
+                if (!is_peak)
+                    break;
             }
             if (is_peak) {
-                peaks[peak_count][0] = height[i][j];  
-                peaks[peak_count][1] = i;             
-                peaks[peak_count][2] = j;            
+                peaks[peak_count][0] = height[i][j];
+                peaks[peak_count][1] = i;
+                peaks[peak_count][2] = j;
                 peak_count++;
             }
         }

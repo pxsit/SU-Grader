@@ -10,14 +10,25 @@
 #define coutf(n, m) cout << fixed << setprecision(n) << m
 #define forr(i, a, n) for (int i = a; i < n; i++)
 #define forv(i, a) for (auto &i : a)
-#define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr);
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(nullptr);
 #define endl '\n'
 #define sp " "
 #define pb push_back
-#define testcase int t; cin >> t; while (t--)
-#define cinn int n; cin >> n;
-#define ci(a) int a; cin >> a;
-#define cins string s; cin >> s;
+#define testcase \
+    int t;       \
+    cin >> t;    \
+    while (t--)
+#define cinn \
+    int n;   \
+    cin >> n;
+#define ci(a) \
+    int a;    \
+    cin >> a;
+#define cins  \
+    string s; \
+    cin >> s;
 #define sortall(a) sort(all(a))
 #define rsortall(a) sort(rall(a))
 #define PI acos(-1)
@@ -44,30 +55,110 @@ const ld EPS = 1e-9;
 ll modadd(ll a, ll b) { return (a + b) % MOD; }
 ll modsub(ll a, ll b) { return (a - b + MOD) % MOD; }
 ll modmul(ll a, ll b) { return (a * b) % MOD; }
-ll modpow(ll a, ll b) { ll res = 1; while (b > 0) { if (b & 1) res = modmul(res, a); a = modmul(a, a); b >>= 1;}return res;}
-ll power(int x, int n) { long double result = exp(log(x) * n); result = round(result); return static_cast<long long>(result); }
-bool isprime(ll a) { if (a == 1) return 0; for (int i = 2; i <= round(sqrt(a)); ++i) if (a % i == 0) return 0; return 1; }
+ll modpow(ll a, ll b) {
+    ll res = 1;
+    while (b > 0) {
+        if (b & 1)
+            res = modmul(res, a);
+        a = modmul(a, a);
+        b >>= 1;
+    }
+    return res;
+}
+ll power(int x, int n) {
+    long double result = exp(log(x) * n);
+    result = round(result);
+    return static_cast<long long>(result);
+}
+bool isprime(ll a) {
+    if (a == 1)
+        return 0;
+    for (int i = 2; i <= round(sqrt(a)); ++i)
+        if (a % i == 0)
+            return 0;
+    return 1;
+}
 void yes() { cout << "YES\n"; }
 void no() { cout << "NO\n"; }
-ll gcd(ll a, ll b) { if (b == 0) return a; return gcd(b, a % b); } //หรม
+ll gcd(ll a, ll b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}                                                // หรม
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; } // ครน, prime sieve will return vll of prime until n
-vll primesieve(int n){vector<bool> prime(n + 1, true);vll v;for (int p = 2; p * p <= n; p++) {if (prime[p] == true) {for (int i = p * p; i <= n; i += p)prime[i] = false;}}for (int p = 2; p <= n; p++) if (prime[p])v.pb(p); return v;}
-template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
-template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
-template<typename typC> istream &operator>>(istream &cin,set<typC> &a) { for (auto &x:a) cin>>x; return cin; }
-template<typename typC> istream &operator>>(istream &cin,multiset<typC> &a) { for (auto &x:a) cin>>x; return cin; }
-template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
-template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
-template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { for (auto &x:a) cout<<x<<' '; return cout; }
-template<typename typC> ostream &operator<<(ostream &cout,const set<typC> &a) { for (auto &x:a) cout<<x<<' '; return cout; }
-template<typename typC> ostream &operator<<(ostream &cout,const multiset<typC> &a) { for (auto &x:a) cout<<x<<' '; return cout;}
+vll primesieve(int n) {
+    vector<bool> prime(n + 1, true);
+    vll v;
+    for (int p = 2; p * p <= n; p++) {
+        if (prime[p] == true) {
+            for (int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+    for (int p = 2; p <= n; p++)
+        if (prime[p])
+            v.pb(p);
+    return v;
+}
+template <typename typC, typename typD>
+istream &operator>>(istream &cin, pair<typC, typD> &a) { return cin >> a.first >> a.second; }
+template <typename typC>
+istream &operator>>(istream &cin, vector<typC> &a) {
+    for (auto &x : a)
+        cin >> x;
+    return cin;
+}
+template <typename typC>
+istream &operator>>(istream &cin, set<typC> &a) {
+    for (auto &x : a)
+        cin >> x;
+    return cin;
+}
+template <typename typC>
+istream &operator>>(istream &cin, multiset<typC> &a) {
+    for (auto &x : a)
+        cin >> x;
+    return cin;
+}
+template <typename typC, typename typD>
+ostream &operator<<(ostream &cout, const pair<typC, typD> &a) { return cout << a.first << ' ' << a.second; }
+template <typename typC, typename typD>
+ostream &operator<<(ostream &cout, const vector<pair<typC, typD>> &a) {
+    for (auto &x : a)
+        cout << x << '\n';
+    return cout;
+}
+template <typename typC>
+ostream &operator<<(ostream &cout, const vector<typC> &a) {
+    for (auto &x : a)
+        cout << x << ' ';
+    return cout;
+}
+template <typename typC>
+ostream &operator<<(ostream &cout, const set<typC> &a) {
+    for (auto &x : a)
+        cout << x << ' ';
+    return cout;
+}
+template <typename typC>
+ostream &operator<<(ostream &cout, const multiset<typC> &a) {
+    for (auto &x : a)
+        cout << x << ' ';
+    return cout;
+}
 
-int32_t main(){fastio;
-    int a,b,c;
+int32_t main() {
+    fastio;
+    int a, b, c;
     cin >> a >> b >> c;
-    if(a+b == c) cout << "+";
-    else if(a-b == c) cout << "-";
-    else if(a*b == c) cout << "*";
-    else if(a/b == c) cout << "/";  
-    else if(a%b == c) cout << "%";
+    if (a + b == c)
+        cout << "+";
+    else if (a - b == c)
+        cout << "-";
+    else if (a * b == c)
+        cout << "*";
+    else if (a / b == c)
+        cout << "/";
+    else if (a % b == c)
+        cout << "%";
 }

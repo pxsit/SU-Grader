@@ -14,9 +14,9 @@ int main() {
         }
 
         if (total >= K) {
-            decision = 1; 
+            decision = 1;
         } else if (total < K / 2) {
-            decision = -1; 
+            decision = -1;
         } else {
             decision = 0;
         }

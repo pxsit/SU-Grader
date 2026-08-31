@@ -9,18 +9,17 @@ int main() {
         if (num <= 0) {
             break;
         }
-        for (int i = 1; i < num+1; i++) {
-            if(i == num)
-                while (1){
-                    if(num < 10){
+        for (int i = 1; i < num + 1; i++) {
+            if (i == num)
+                while (1) {
+                    if (num < 10) {
                         printf("%d", num);
                         break;
                         i++;
-                    }
-                    else
-                        num%=10;
+                    } else
+                        num %= 10;
                 }
-            else if(i%5 == 0) 
+            else if (i % 5 == 0)
                 printf("X");
             else
                 printf("*");

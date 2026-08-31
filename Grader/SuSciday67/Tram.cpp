@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstdio>
+#include <iostream>
 
 typedef struct {
     int type;
@@ -28,7 +28,7 @@ int main() {
             break;
         }
         scanf("%d", &PassCount);
-        
+
         if (Number < 1 || Number > n) {
             continue;
         }
@@ -37,15 +37,15 @@ int main() {
 
         if (trams[index].isOperational == 1) {
             if (PassCount > 0) {
-                if (trams[index].passengers + PassCount >= MaxCap[trams[index].type - 1] ) {
-                    trams[index].passengers = MaxCap[trams[index].type-1];
-                }else if(trams[index].passengers + PassCount < MaxCap[trams[index].type - 1]){
+                if (trams[index].passengers + PassCount >= MaxCap[trams[index].type - 1]) {
+                    trams[index].passengers = MaxCap[trams[index].type - 1];
+                } else if (trams[index].passengers + PassCount < MaxCap[trams[index].type - 1]) {
                     trams[index].passengers += PassCount;
                 }
             } else if (PassCount < 0) {
                 if (trams[index].passengers - abs(PassCount) < 0) {
                     trams[index].passengers = 0;
-                }else if(trams[index].passengers - abs(PassCount) > 0){
+                } else if (trams[index].passengers - abs(PassCount) > 0) {
                     trams[index].passengers -= abs(PassCount);
                 }
             } else {
@@ -61,7 +61,7 @@ int main() {
     for (int j = 0; j < n; j++) {
         if (trams[j].isOperational == 1) {
             printf("%d ", trams[j].passengers);
-        }else{
+        } else {
             printf("-1 ");
         }
     }

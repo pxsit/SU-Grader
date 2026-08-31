@@ -5,7 +5,7 @@ int main() {
     char c[101];
     scanf("%s", c);
     int len = strlen(c);
-    int pal = 1; 
+    int pal = 1;
     if (len == 1) {
         printf("%s is a palindrome", c);
         return 0;
@@ -18,7 +18,7 @@ int main() {
         }
     }
 
-    if(pal) {
+    if (pal) {
         printf("%s is a palindrome", c);
     } else {
         printf("%s is not a palindrome", c);
