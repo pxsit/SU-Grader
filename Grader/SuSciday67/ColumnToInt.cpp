@@ -1,6 +1,5 @@
-#include <iostream>
-#include <string.h>
-
+#include <bits/stdc++.h>
+using namespace std;
 int Converter(const char *name) {
     int n = 0;
     int length = strlen(name);
@@ -24,9 +23,7 @@ int Converter(const char *name) {
 
 int main() {
     char name[10];
-    scanf("%s", name);
+    cin >> name;
     int result = Converter(name);
-    printf("%d\n", result);
-
-    return 0;
+    cout << result << '\n';
 }

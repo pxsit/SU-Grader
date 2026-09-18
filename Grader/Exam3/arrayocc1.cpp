@@ -1,16 +1,17 @@
-#include <algorithm>
-#include <stdio.h>
-
+#include <bits/stdc++.h>
+using namespace std;
 int A[100001];
 int main() {
     int N, K, x;
-    scanf("%d%d", &N, &K);
-    std::fill(A + 1, A + (N + 1), 0); // Init to zeros
+    cin >> N >> K;
+    for (int i = 1; i <= N; i++) {
+        A[i] = 0;
+    }
     int success = 0;
     int outBound = 0;
     int dup = 0;
     for (int i = 0; i < K; ++i) {
-        scanf("%d", &x);
+        cin >> x;
         if (x < 1 || x > N)
             ++outBound;
         else {
@@ -21,7 +22,9 @@ int main() {
             ++A[x];
         }
     }
-    printf("%d\n%d\n%d\n", success, outBound, dup);
+    cout << success << '\n'
+         << outBound << '\n'
+         << dup << '\n';
     int maxDup = 0;
     for (int i = 1; i <= N; ++i) {
         if (A[i] > maxDup)
@@ -29,8 +32,6 @@ int main() {
     }
     for (int i = 1; i <= N; ++i) {
         if (A[i] == maxDup)
-            printf("%d ", i);
+            cout << i << ' ';
     }
-
-    return 0;
 }

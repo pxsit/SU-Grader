@@ -1,5 +1,5 @@
-#include <cstdio>
-
+#include <bits/stdc++.h>
+using namespace std;
 bool isInvalidMove(int x, int y, int d) {
     if (d == 0 && x == 1)
         return true;
@@ -10,12 +10,12 @@ bool isInvalidMove(int x, int y, int d) {
     else if (d == 3 && y == 8)
         return true;
     else
-        return false; // valid, need to make a move
+        return false;
 }
 
 void makeAMove(int x, int y, int d, int b[9][9]) {
     if (isInvalidMove(x, y, d))
-        return; // do nothing
+        return;
 
     int temp = b[y][x];
     if (d == 0) {
@@ -69,16 +69,14 @@ int main() {
     int b[9][9];
     for (int row = 1; row <= 8; ++row)
         for (int col = 1; col <= 8; ++col)
-            scanf("%d", &b[row][col]);
+            cin >> b[row][col];
 
     int n;
-    scanf("%d", &n);
+    cin >> n;
     for (int i = 0; i < n; ++i) {
         int x, y, d;
-        scanf("%d%d%d", &x, &y, &d);
+        cin >> x >> y >> d;
         makeAMove(x, y, d, b);
-        printf("H %d V %d\n", countHorizontal(x, y, b), countVertical(x, y, b));
+        cout << "H " << countHorizontal(x, y, b) << " V " << countVertical(x, y, b) << '\n';
     }
-
-    return 0;
 }

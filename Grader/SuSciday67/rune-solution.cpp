@@ -1,19 +1,14 @@
-#include <cstring>
-#include <iostream>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-#define MAXN 1000000
+const int maxn = 1000000;
 
 int N, K;
 string S;
-int A[MAXN];
-int B[MAXN];
+int A[maxn];
+int B[maxn];
 
 int main() {
-
-    cin.sync_with_stdio(false);
 
     cin >> N >> K >> S;
 
@@ -36,7 +31,5 @@ int main() {
     for (int i = 0; i < N; i++) {
         S[i] = A[i] + 'A';
     }
-    cout << S << endl;
-
-    return 0;
+    cout << S << '\n';
 }

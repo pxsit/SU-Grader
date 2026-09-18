@@ -1,6 +1,5 @@
-#include <cstdio>
-#include <iostream>
-
+#include <bits/stdc++.h>
+using namespace std;
 typedef struct {
     int type;
     int passengers;
@@ -9,13 +8,13 @@ typedef struct {
 
 int main() {
     int n;
-    scanf("%d", &n);
+    cin >> n;
     int MaxCap[3] = {11, 14, 27};
 
     Tram trams[n];
 
     for (int i = 0; i < n; i++) {
-        scanf("%d", &trams[i].type);
+        cin >> trams[i].type;
         trams[i].passengers = 0;
         trams[i].isOperational = 1;
     }
@@ -23,11 +22,11 @@ int main() {
     while (true) {
         int Number;
         int PassCount;
-        scanf("%d", &Number);
+        cin >> Number;
         if (Number < 0) {
             break;
         }
-        scanf("%d", &PassCount);
+        cin >> PassCount;
 
         if (Number < 1 || Number > n) {
             continue;
@@ -60,11 +59,9 @@ int main() {
 
     for (int j = 0; j < n; j++) {
         if (trams[j].isOperational == 1) {
-            printf("%d ", trams[j].passengers);
+            cout << trams[j].passengers << ' ';
         } else {
-            printf("-1 ");
+            cout << "-1 ";
         }
     }
-
-    return 0;
 }
