@@ -5,8 +5,7 @@ int main() {
     int day = 1;
     cin >> worker;
     cin >> n;
-    int finish[n];
-    int remaining_work[n];
+    vector<int> finish(n), remaining_work(n);
     for (int i = 0; i < n; i++) {
         cin >> remaining_work[i];
     }

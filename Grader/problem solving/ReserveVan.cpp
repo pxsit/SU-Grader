@@ -6,8 +6,8 @@ int main() {
     int B = 0;
     int C = 0;
     int day;
-    char van[10000];
     cin >> num;
+    vector<char> van(num);
     for (int i = 0; i <= num - 1; i++) {
         cin >> day;
 

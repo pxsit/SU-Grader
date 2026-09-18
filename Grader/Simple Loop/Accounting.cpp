@@ -1,22 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
-int IncomeNum, ExpenseNum, IncomeValue, ExpenseValue;
-int TotalIncome, TotalExpense;
-int n = 1;
-
 int main() {
+    int in = 0, en = 0, iv, ev, ti = 0, te = 0, n = 1;
     while (n != 0) {
         cin >> n;
         if (n == 1) {
-            IncomeNum++;
-            cin >> IncomeValue;
-            TotalIncome += IncomeValue;
+            in++;
+            cin >> iv;
+            ti += iv;
         } else if (n == 2) {
-            ExpenseNum++;
-            cin >> ExpenseValue;
-            TotalExpense += ExpenseValue;
+            en++;
+            cin >> ev;
+            te += ev;
         }
     }
-    cout << IncomeNum << ' ' << ExpenseNum << '\n'
-         << TotalIncome << ' ' << TotalExpense << ' ' << TotalIncome - TotalExpense;
+    cout << in << ' ' << en << '\n'
+         << ti << ' ' << te << ' ' << ti - te;
 }

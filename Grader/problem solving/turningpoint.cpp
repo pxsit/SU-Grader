@@ -2,10 +2,12 @@
 using namespace std;
 int main() {
     int up = 0, down = 0, direction = 0;
-    int vali[1000000];
+    vector<int> vali;
     while (1) {
-        cin >> vali[direction];
-        if (vali[direction] == 0) {
+        int x;
+        cin >> x;
+        vali.push_back(x);
+        if (x == 0) {
             break;
         }
         direction++;

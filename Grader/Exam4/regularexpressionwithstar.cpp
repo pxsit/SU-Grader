@@ -1,106 +1,106 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    char pattern[1024];
+    string p;
     int n;
 
-    cin >> pattern;
+    cin >> p;
     cin >> n;
 
-    char words[n][1024];
+    vector<string> w(n);
 
     for (int i = 0; i < n; i++) {
-        cin >> words[i];
+        cin >> w[i];
     }
 
-    char prefix[1024] = {0}, suffix[1024] = {0};
-    int starPos = -1;
+    string pre, suf;
+    int sp = -1;
 
-    for (int i = 0; i < strlen(pattern); i++) {
-        if (pattern[i] == '*') {
-            starPos = i;
+    for (int i = 0; i < (int)p.size(); i++) {
+        if (p[i] == '*') {
+            sp = i;
             break;
         }
     }
 
-    if (starPos != -1) {
-        strncpy(prefix, pattern, starPos);
-        strcpy(suffix, &pattern[starPos + 1]);
+    if (sp != -1) {
+        pre = p.substr(0, sp);
+        suf = p.substr(sp + 1);
     }
 
     for (int i = 0; i < n; i++) {
-        char *word = words[i];
-        int wordLen = strlen(word);
-        int prefixLen = strlen(prefix);
-        int suffixLen = strlen(suffix);
+        string &s = w[i];
+        int slen = s.size();
+        int plen = pre.size();
+        int tlen = suf.size();
 
-        if (starPos == 0) {
-            if (strncmp(&word[wordLen - suffixLen], suffix, suffixLen) == 0) {
+        if (sp == 0) {
+            if (s.compare(slen - tlen, tlen, suf) == 0) {
                 cout << "T ";
-                for (int j = 0; j < wordLen - suffixLen; j++) {
-                    cout << word[j];
+                for (int j = 0; j < slen - tlen; j++) {
+                    cout << s[j];
                 }
-                if (wordLen == suffixLen) {
+                if (slen == tlen) {
                     cout << "-";
                 }
                 cout << '\n';
             } else {
                 cout << "F ";
-                for (int j = 0; j < suffixLen; j++) {
-                    if (word[wordLen - suffixLen + j] != suffix[j]) {
-                        cout << wordLen - suffixLen + j + 1 << '\n';
+                for (int j = 0; j < tlen; j++) {
+                    if (s[slen - tlen + j] != suf[j]) {
+                        cout << slen - tlen + j + 1 << '\n';
                         break;
                     }
                 }
             }
-        } else if (starPos == strlen(pattern) - 1) {
-            if (strncmp(word, prefix, prefixLen) == 0) {
+        } else if (sp == (int)p.size() - 1) {
+            if (s.compare(0, plen, pre) == 0) {
                 cout << "T ";
-                for (int j = prefixLen; j < wordLen; j++) {
-                    cout << word[j];
+                for (int j = plen; j < slen; j++) {
+                    cout << s[j];
                 }
-                if (wordLen == prefixLen) {
+                if (slen == plen) {
                     cout << "-";
                 }
                 cout << '\n';
             } else {
                 cout << "F ";
-                for (int j = 0; j < prefixLen; j++) {
-                    if (word[j] != prefix[j]) {
+                for (int j = 0; j < plen; j++) {
+                    if (s[j] != pre[j]) {
                         cout << j + 1 << '\n';
                         break;
                     }
                 }
             }
         } else {
-            if (strncmp(word, prefix, prefixLen) == 0 &&
-                strncmp(&word[wordLen - suffixLen], suffix, suffixLen) == 0) {
+            if (s.compare(0, plen, pre) == 0 &&
+                s.compare(slen - tlen, tlen, suf) == 0) {
                 cout << "T ";
-                for (int j = prefixLen; j < wordLen - suffixLen; j++) {
-                    cout << word[j];
+                for (int j = plen; j < slen - tlen; j++) {
+                    cout << s[j];
                 }
-                if (wordLen == prefixLen + suffixLen) {
+                if (slen == plen + tlen) {
                     cout << "-";
                 }
                 cout << '\n';
             } else {
                 cout << "F ";
-                int mismatchPos = 0;
-                for (int j = 0; j < prefixLen; j++) {
-                    if (word[j] != prefix[j]) {
-                        mismatchPos = j + 1;
+                int pos = 0;
+                for (int j = 0; j < plen; j++) {
+                    if (s[j] != pre[j]) {
+                        pos = j + 1;
                         break;
                     }
                 }
-                if (mismatchPos == 0) {
-                    for (int j = 0; j < suffixLen; j++) {
-                        if (word[wordLen - suffixLen + j] != suffix[j]) {
-                            mismatchPos = wordLen - suffixLen + j + 1;
+                if (pos == 0) {
+                    for (int j = 0; j < tlen; j++) {
+                        if (s[slen - tlen + j] != suf[j]) {
+                            pos = slen - tlen + j + 1;
                             break;
                         }
                     }
                 }
-                cout << mismatchPos << '\n';
+                cout << pos << '\n';
             }
         }
     }

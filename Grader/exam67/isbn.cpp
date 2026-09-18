@@ -1,16 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int digits[9], i, sum = 0, last;
+    vector<int> a(9);
+    int sum = 0, last;
 
-    for (i = 0; i < 9; i++) {
-        char digit;
-        cin >> digit;
-        digits[i] = digit - '0';
+    for (int i = 0; i < 9; i++) {
+        char c;
+        cin >> c;
+        a[i] = c - '0';
     }
 
-    for (i = 0; i < 9; i++) {
-        sum += (10 - i) * digits[i];
+    for (int i = 0; i < 9; i++) {
+        sum += (10 - i) * a[i];
     }
 
     last = 11 - (sum % 11);

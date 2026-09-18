@@ -1,17 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, k, t;
-
 int main() {
+    int n, k, t = 0;
     cin >> n;
-    int array[n];
-    int used[n];
+    vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        cin >> array[i];
+        cin >> a[i];
     }
     cin >> k;
     for (int i = 0; i < n; i++) {
-        if (array[i] == k) {
+        if (a[i] == k) {
             cout << i + 1 << ' ';
             t = 1;
         }

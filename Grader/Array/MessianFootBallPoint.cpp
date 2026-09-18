@@ -1,61 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, a, b, c;
-
 int main() {
+    int n;
     cin >> n;
-    char Result[n][39];
-    int OldScore[n], NewScore[n], MessianScore[n], Win[n], Lose[n], Draw[n];
+    vector<vector<char>> r(n, vector<char>(39));
+    vector<int> o(n), ns(n), ms(n), w(n), l(n), d(n);
     for (int i = 0; i < n; i++) {
-        Win[i] = 0;
-        Lose[i] = 0;
-        Draw[i] = 0;
-        MessianScore[i] = 0;
-        NewScore[i] = 0;
-        OldScore[i] = 0;
         for (int j = 0; j < 39; j++) {
-            cin >> Result[i][j];
+            cin >> r[i][j];
         }
     }
 
 
     for (int i = 0; i < n; i++) {
-        a, b, c = 0;
         for (int j = 0; j < 39; j++) {
-
-            if (Result[i][j] == 'W') {
-                OldScore[i] += 2;
-                Win[i]++;
-            } else if (Result[i][j] == 'D') {
-                OldScore[i] += 1;
-                Draw[i]++;
-            } else if (Result[i][j] == 'L') {
-                OldScore[i] += 0;
-                Lose[i]++;
+            if (r[i][j] == 'W') {
+                o[i] += 2;
+                w[i]++;
+            } else if (r[i][j] == 'D') {
+                o[i]++;
+                d[i]++;
+            } else if (r[i][j] == 'L') {
+                l[i]++;
             }
-
-
-            if (Result[i][j] == 'W') {
-                NewScore[i] += 3;
-            } else if (Result[i][j] == 'D') {
-                NewScore[i] += 1;
-            } else if (Result[i][j] == 'L') {
-                NewScore[i] += 0;
+            if (r[i][j] == 'W') {
+                ns[i] += 3;
+            } else if (r[i][j] == 'D') {
+                ns[i]++;
             }
-
-
-            if (Result[i][j] == 'W') {
-                MessianScore[i] += 5;
-            } else if (Result[i][j] == 'D') {
-                MessianScore[i] += 1;
-            } else if (Result[i][j] == 'L') {
-                MessianScore[i] -= 1;
+            if (r[i][j] == 'W') {
+                ms[i] += 5;
+            } else if (r[i][j] == 'D') {
+                ms[i]++;
+            } else if (r[i][j] == 'L') {
+                ms[i]--;
             }
         }
 
     }
 
     for (int i = 0; i < n; i++) {
-        cout << Win[i] << ' ' << Draw[i] << ' ' << Lose[i] << ' ' << OldScore[i] << ' ' << NewScore[i] << ' ' << MessianScore[i] << '\n';
+        cout << w[i] << ' ' << d[i] << ' ' << l[i] << ' ' << o[i] << ' ' << ns[i] << ' ' << ms[i] << '\n';
     }
 }

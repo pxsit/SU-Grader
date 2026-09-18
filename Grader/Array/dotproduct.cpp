@@ -2,19 +2,18 @@
 using namespace std;
 int main() {
     int n;
-    int a = 0;
+    int s = 0;
     cin >> n;
-    int array1[n];
-    int array2[n];
+    vector<int> a(n), b(n);
     for (int i = 0; i < n; i++) {
-        cin >> array1[i];
+        cin >> a[i];
     }
     for (int i = 0; i < n; i++) {
-        cin >> array2[i];
+        cin >> b[i];
     }
     for (int i = 0; i < n; i++) {
-        int temp = array1[i] * array2[i];
-        a += temp;
+        int x = a[i] * b[i];
+        s += x;
     }
-    cout << a;
+    cout << s;
 }

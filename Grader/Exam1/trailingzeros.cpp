@@ -3,7 +3,6 @@ using namespace std;
 int main() {
     int a;
     int b = 0;
-    int c;
     cin >> a;
     while (a > 0) {
         b += a / 5;

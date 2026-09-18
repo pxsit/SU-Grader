@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int array[100];
-    int a = 0;
+    vector<int> a;
+    int n = 0;
     int left = 0;
     int next = 0;
     for (int i = 0;; i++) {
@@ -11,25 +11,25 @@ int main() {
         if (in == 0) {
             break;
         } else {
-            array[i] = in;
-            a++;
+            a.push_back(in);
+            n++;
         }
     }
-    int round[a];
+    vector<int> r(n);
     int m = 55, h = 7;
-    for (int i = 0; i < a; i++) {
-        if (array[i] < 50)
-            round[i] = 1;
+    for (int i = 0; i < n; i++) {
+        if (a[i] < 50)
+            r[i] = 1;
         else
-            round[i] = (array[i] - left) / 50;
+            r[i] = (a[i] - left) / 50;
     }
     left = 0;
-    for (int j = 0; j < a; j++) {
-        cout << array[j] << ' ';
+    for (int j = 0; j < n; j++) {
+        cout << a[j] << ' ';
         if (next == 0) {
-            for (int i = 0; i <= round[j]; i++) {
+            for (int i = 0; i <= r[j]; i++) {
                 if (left != 0) {
-                    if (array[j] > left) {
+                    if (a[j] > left) {
                         if (h < 10) {
                             if (m < 10) {
                                 cout << "0" << h << ":0" << m << "(" << left << ") ";
@@ -43,24 +43,24 @@ int main() {
                                 cout << h << ":" << m << "(" << left << ") ";
                             }
                         }
-                        array[j] -= left;
+                        a[j] -= left;
                         left = 0;
                     } else {
                         if (h < 10) {
                             if (m < 10) {
-                                cout << "0" << h << ":0" << m << "(" << array[j] << ") ";
+                                cout << "0" << h << ":0" << m << "(" << a[j] << ") ";
                             } else {
-                                cout << "0" << h << ":" << m << "(" << array[j] << ") ";
+                                cout << "0" << h << ":" << m << "(" << a[j] << ") ";
                             }
                         } else {
                             if (m < 10) {
-                                cout << h << ":0" << m << "(" << array[j] << ") ";
+                                cout << h << ":0" << m << "(" << a[j] << ") ";
                             } else {
-                                cout << h << ":" << m << "(" << array[j] << ") ";
+                                cout << h << ":" << m << "(" << a[j] << ") ";
                             }
                         }
-                        left -= array[j];
-                        array[j] = 0;
+                        left -= a[j];
+                        a[j] = 0;
                         break;
                     }
                 }
@@ -74,7 +74,7 @@ int main() {
                     cout << "next day";
                     break;
                 }
-                if (array[j] > 50) {
+                if (a[j] > 50) {
                     if (h < 10) {
                         if (m < 10) {
                             cout << "0" << h << ":0" << m << "(50) ";
@@ -88,8 +88,8 @@ int main() {
                             cout << h << ":" << m << "(50) ";
                         }
                     }
-                    array[j] -= 50;
-                } else if (array[j] == 50) {
+                    a[j] -= 50;
+                } else if (a[j] == 50) {
                     if (h < 10) {
                         if (m < 10) {
                             cout << "0" << h << ":0" << m << "(50) ";
@@ -103,29 +103,29 @@ int main() {
                             cout << h << ":" << m << "(50) ";
                         }
                     }
-                    array[j] -= 50;
+                    a[j] -= 50;
                     break;
                 } else {
                     if (h < 10) {
                         if (m < 10) {
-                            cout << "0" << h << ":0" << m << "(" << array[j] << ") ";
+                            cout << "0" << h << ":0" << m << "(" << a[j] << ") ";
                         } else {
-                            cout << "0" << h << ":" << m << "(" << array[j] << ") ";
+                            cout << "0" << h << ":" << m << "(" << a[j] << ") ";
                         }
                     } else {
                         if (m < 10) {
-                            cout << h << ":0" << m << "(" << array[j] << ") ";
+                            cout << h << ":0" << m << "(" << a[j] << ") ";
                         } else {
-                            cout << h << ":" << m << "(" << array[j] << ") ";
+                            cout << h << ":" << m << "(" << a[j] << ") ";
                         }
                     }
-                    left = 50 - array[j];
+                    left = 50 - a[j];
                     break;
                 }
             }
             cout << '\n';
         } else {
-            if (j == a - 1)
+            if (j == n - 1)
                 cout << "next day";
             else
                 cout << "next day" << '\n';

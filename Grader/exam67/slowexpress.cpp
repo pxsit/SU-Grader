@@ -1,23 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int weight, total_weight = 0, trucks_needed;
+    int w, tw = 0, tn;
 
     while (1) {
-        cin >> weight;
+        cin >> w;
 
-        if (weight < 0) {
+        if (w < 0) {
             break;
         }
 
-        total_weight += weight;
+        tw += w;
 
-        trucks_needed = total_weight / 800;
-        total_weight -= 800 * trucks_needed;
-        if (total_weight % 800 >= 500) {
-            trucks_needed++;
-            total_weight = 0;
+        tn = tw / 800;
+        tw -= 800 * tn;
+        if (tw % 800 >= 500) {
+            tn++;
+            tw = 0;
         }
-        cout << trucks_needed << '\n';
+        cout << tn << '\n';
     }
 }

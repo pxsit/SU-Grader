@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    char c[81];
-    cin >> c;
+    string s;
+    cin >> s;
     int a = 0;
     int b = 0;
-    for (int i = 0; i < strlen(c); i++) {
-        if (islower(c[i])) {
+    for (int i = 0; i < s.size(); i++) {
+        if (islower(s[i])) {
             a++;
-        } else if (isupper(c[i])) {
+        } else if (isupper(s[i])) {
             b++;
         }
     }

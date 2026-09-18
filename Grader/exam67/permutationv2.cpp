@@ -14,25 +14,24 @@ int fac(int a) {
 
 int main() {
     int n, result = 0;
-    int mcount = 0;
-    int original_values[12];
-    int unused_value;
+    int cnt = 0;
+    vector<int> org(12);
     cin >> n;
     int f = n;
-    int array[12];
-    char in[13];
-    cin >> in;
+    vector<int> a(12);
+    string s;
+    cin >> s;
     for (int i = 0; i < n; i++) {
-        array[i] = ((int)in[i]) - 65;
+        a[i] = (int)s[i] - 65;
     }
     for (int i = 0; i < n; i++) {
-        original_values[i] = array[i];
-        if (i != 0 && array[i] > original_values[i - 1]) {
-            array[i] -= mcount;
+        org[i] = a[i];
+        if (i != 0 && a[i] > org[i - 1]) {
+            a[i] -= cnt;
         }
-        result += array[i] * fac(f - 1);
+        result += a[i] * fac(f - 1);
         f--;
-        mcount++;
+        cnt++;
     }
     cout << result + 1;
 }

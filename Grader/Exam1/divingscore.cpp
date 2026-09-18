@@ -3,30 +3,30 @@ using namespace std;
 
 int main() {
     int n;
-    int max = 1;
-    int min = 10;
+    int mx = 1;
+    int mn = 10;
     int sum = 0;
     cin >> n;
-    int array[n];
+    vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        cin >> array[i];
+        cin >> a[i];
         if (n != 3) {
-            if (array[i] < min) {
-                min = array[i];
+            if (a[i] < mn) {
+                mn = a[i];
             }
-            if (array[i] > max) {
-                max = array[i];
+            if (a[i] > mx) {
+                mx = a[i];
             }
         }
     }
     if (n != 3) {
         for (int i = 0; i < n; i++) {
-            sum += array[i];
+            sum += a[i];
         }
-        sum -= (max + min);
+        sum -= mx + mn;
     } else {
         for (int i = 0; i < n; i++) {
-            sum += array[i];
+            sum += a[i];
         }
     }
     cout << sum;

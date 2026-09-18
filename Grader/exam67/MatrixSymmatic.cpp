@@ -1,20 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-
 int main() {
+    int n;
     cin >> n;
-    int InputArray[n][n];
+    vector<vector<int>> a(n, vector<int>(n));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            InputArray[i][j] = 7;
+            a[i][j] = 7;
         }
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < i; j++) {
-            cin >> InputArray[i][j];
+            cin >> a[i][j];
         }
     }
 
@@ -23,9 +22,9 @@ int main() {
             if (i == j) {
                 cout << "0 ";
             } else if (j > i) {
-                cout << InputArray[j][i] << ' ';
+                cout << a[j][i] << ' ';
             } else {
-                cout << InputArray[i][j] << ' ';
+                cout << a[i][j] << ' ';
             }
         }
         cout << '\n';

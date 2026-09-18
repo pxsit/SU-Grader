@@ -1,59 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int num[10000];
-    int lenge = -1;
-    int counto = 0;
-    int counte = 0;
-    int fcounte = 0;
-    int fcounto = 0;
-    cin >> num[0];
+    vector<int> a(10000);
+    int n = -1;
+    int co = 0;
+    int ce = 0;
+    int fe = 0;
+    int fo = 0;
+    cin >> a[0];
     int i = 0;
 
-    while (num[i] > 0) {
-        lenge++;
+    while (a[i] > 0) {
+        n++;
         i++;
-        cin >> num[i];
+        cin >> a[i];
     }
 
-    for (int j = 0; j < lenge; j++) {
-        if (num[j] % 2 == 0) {
-            if (num[j + 1] % 2 == 1) {
-                counte++;
+    for (int j = 0; j < n; j++) {
+        if (a[j] % 2 == 0) {
+            if (a[j + 1] % 2 == 1) {
+                ce++;
                 j++;
-                if (counte > fcounte) {
-                    fcounte = counte;
+                if (ce > fe) {
+                    fe = ce;
                 }
 
             } else {
-                counte = 0;
+                ce = 0;
             }
         } else {
-            counte = 0;
+            ce = 0;
         }
     }
-    for (int j = 0; j < lenge; j++) {
-        if (num[j] % 2 == 1) {
-            if (num[j + 1] % 2 == 0) {
-                counto++;
+    for (int j = 0; j < n; j++) {
+        if (a[j] % 2 == 1) {
+            if (a[j + 1] % 2 == 0) {
+                co++;
                 j++;
-                if (counto > fcounto) {
-                    fcounto = counto;
+                if (co > fo) {
+                    fo = co;
                 }
             } else {
-                counto = 0;
+                co = 0;
             }
 
         } else
-            counto = 0;
+            co = 0;
     }
 
-    if (fcounte > fcounto) {
+    if (fe > fo) {
 
-        cout << fcounte << '\n';
+        cout << fe << '\n';
     }
 
     else {
-        cout << fcounto;
+        cout << fo;
     }
 }

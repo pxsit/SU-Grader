@@ -1,23 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    char c[55];
-    int array[26];
+    string s;
+    vector<int> v(26);
     int a = 0;
-    cin >> c;
+    cin >> s;
     for (int i = 0; i < 26; i++) {
-        array[i] = 0;
+        v[i] = 0;
     }
-    for (int i = 0; i < strlen(c); i++) {
+    for (int i = 0; i < s.size(); i++) {
         if (a == 6) {
             break;
         } else {
-            array[((int)c[i]) - 97]++;
+            v[s[i] - 'a']++;
         }
     }
     for (int i = 0; i < 26; i++) {
-        if (array[i] != 0) {
-            cout << array[i];
+        if (v[i] != 0) {
+            cout << v[i];
         }
     }
 }

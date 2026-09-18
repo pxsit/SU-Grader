@@ -4,34 +4,34 @@ int main() {
     int n;
     cin >> n;
 
-    int array[5][n];
+    vector<vector<int>> a(5, vector<int>(n));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < 5; j++) {
-            cin >> array[j][i];
+            cin >> a[j][i];
         }
     }
 
-    int max_diff = 0, min_diff = 2147483647;
+    int mx = 0, mn = INT_MAX;
     for (int j = 0; j < n; j++) {
-        int mx = array[0][j], mn = array[0][j];
+        int x = a[0][j], y = a[0][j];
 
         for (int i = 1; i < 5; i++) {
-            if (array[i][j] > mx) {
-                mx = array[i][j];
-            } else if (array[i][j] < mn) {
-                mn = array[i][j];
+            if (a[i][j] > x) {
+                x = a[i][j];
+            } else if (a[i][j] < y) {
+                y = a[i][j];
             }
         }
 
-        int diff = mx - mn;
-        if (diff > max_diff) {
-            max_diff = diff;
+        int d = x - y;
+        if (d > mx) {
+            mx = d;
         }
-        if (diff < min_diff) {
-            min_diff = diff;
+        if (d < mn) {
+            mn = d;
         }
     }
 
-    cout << max_diff << ' ' << min_diff << ' ' << max_diff - min_diff << '\n';
+    cout << mx << ' ' << mn << ' ' << mx - mn << '\n';
 }

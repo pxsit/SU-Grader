@@ -3,7 +3,7 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    int m[n];
+    vector<int> m(n);
     int h = 0, b = 0, a;
     for (int i = 0; i < n; i++) {
         cin >> a;
@@ -13,12 +13,7 @@ int main() {
         m[i] = a;
     }
 
-    int map[h][b];
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < b; j++) {
-            map[i][j] = 0;
-        }
-    }
+    vector<vector<int>> map(h, vector<int>(b));
 
     int x = 0;
     for (int i = 0; i < n; i++) {

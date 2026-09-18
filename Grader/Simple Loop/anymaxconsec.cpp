@@ -1,30 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int numbers[1000], i = 0, current_num, max_count = 1, current_count = 1, max_num;
+    vector<int> a;
+    int x, c = 1, mc = 1, mx;
     while (1) {
-        cin >> numbers[i];
-        if (numbers[i] == 0) {
+        cin >> x;
+        if (x == 0) {
             break;
         }
-        i++;
+        a.push_back(x);
     }
 
-    current_num = numbers[0];
-    max_num = numbers[0];
-    for (int j = 1; j < i; j++) {
-        if (numbers[j] == current_num) {
-            current_count++;
-            if (current_count > max_count) {
-                max_count = current_count;
-                max_num = current_num;
+    x = a[0];
+    mx = a[0];
+    for (int i = 1; i < a.size(); i++) {
+        if (a[i] == x) {
+            c++;
+            if (c > mc) {
+                mc = c;
+                mx = x;
             }
         } else {
-            current_num = numbers[j];
-            current_count = 1;
+            x = a[i];
+            c = 1;
         }
     }
 
-    cout << max_count << '\n'
-         << max_num;
+    cout << mc << '\n'
+         << mx;
 }

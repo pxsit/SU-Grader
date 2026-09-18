@@ -2,15 +2,15 @@
 using namespace std;
 
 int main() {
-    int a, b, c, min;
+    int a, b, c, d;
     cin >> a >> b >> c;
-    min = a / 3;
-    if (b / 4 < min)
-        min = b / 4;
-    if (c / 2 < min)
-        min = c / 2;
-    a -= min * 3;
-    b -= min * 4;
-    c -= min * 2;
-    cout << min << ' ' << a << ' ' << b << ' ' << c;
+    d = a / 3;
+    if (b / 4 < d)
+        d = b / 4;
+    if (c / 2 < d)
+        d = c / 2;
+    a -= d * 3;
+    b -= d * 4;
+    c -= d * 2;
+    cout << d << ' ' << a << ' ' << b << ' ' << c;
 }

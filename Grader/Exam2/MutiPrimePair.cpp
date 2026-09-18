@@ -1,56 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
+typedef long long ll;
 
-const int max_prime = 100000;
-ll ListsOfPrime[max_prime];
-int primeCount = 0;
+vector<ll> primes() {
+    const int mx = 100000;
+    vector<bool> isp(mx + 1);
+    vector<ll> p;
 
-void generatePrimes() {
-    ll isPrime[max_prime + 1] = {0};
-    primeCount = 0;
-
-    for (int i = 2; i <= max_prime; i++) {
-        if (isPrime[i] == 0) {
-            ListsOfPrime[primeCount++] = i;
-            for (int j = i * 2; j <= max_prime; j += i) {
-                isPrime[j] = 1;
+    for (int i = 2; i <= mx; i++) {
+        if (!isp[i]) {
+            p.push_back(i);
+            for (int j = i * 2; j <= mx; j += i) {
+                isp[j] = true;
             }
         }
     }
+    return p;
 }
 
 int main() {
     int t;
     cin >> t;
-    ll K[t];
+    vector<ll> a(t);
     t -= 1;
 
     for (int i = 0; i < t; i++) {
-        cin >> K[i];
+        cin >> a[i];
     }
 
-    generatePrimes();
+    vector<ll> p = primes();
 
     for (int i = 0; i < t; i++) {
-        ll limit = K[i];
-        ll minProduct = 1e18;
+        ll lim = a[i];
+        ll mn = 1e18;
         int found = 0;
-        for (int j = 0; j < primeCount && found == 0; j++) {
-            for (int p = j + 1; p < primeCount; p++) {
-                ll product = ListsOfPrime[j] * ListsOfPrime[p];
-                if (j == p)
+        for (int j = 0; j < (int)p.size() && found == 0; j++) {
+            for (int k = j + 1; k < (int)p.size(); k++) {
+                ll prod = p[j] * p[k];
+                if (j == k)
                     continue;
-                if (product <= minProduct && product >= limit) {
-                    minProduct = product;
+                if (prod <= mn && prod >= lim) {
+                    mn = prod;
                 }
-                if (minProduct == limit) {
+                if (mn == lim) {
                     found = 1;
                     break;
                 }
             }
         }
-        cout << minProduct << '\n';
+        cout << mn << '\n';
     }
     cout << "100001";
 }

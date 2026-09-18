@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-int NumSet, Intersect, CompliSect, a, b;
-
 int main() {
-    cin >> NumSet >> Intersect >> CompliSect >> a;
-    b = NumSet - Intersect - (a - Intersect + CompliSect) + Intersect;
+    int numset, intersect, complisect, a, b;
+    cin >> numset >> intersect >> complisect >> a;
+    b = numset - intersect - (a - intersect + complisect) + intersect;
     cout << b;
 }

@@ -1,44 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int N;
-    cin >> N;
+    int n;
+    cin >> n;
 
-    int height[N][N];
-    int peaks[N * N][3];
-    int peak_count = 0;
+    vector<vector<int>> h(n, vector<int>(n));
+    vector<array<int, 3>> p;
 
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cin >> height[i][j];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> h[i][j];
         }
     }
 
-    for (int i = 1; i < N - 1; i++) {
-        for (int j = 1; j < N - 1; j++) {
-            int is_peak = 1;
+    for (int i = 1; i < n - 1; i++) {
+        for (int j = 1; j < n - 1; j++) {
+            int peak = 1;
             for (int x = i - 1; x <= i + 1; x++) {
                 for (int y = j - 1; y <= j + 1; y++) {
-                    if ((x != i || y != j) && height[x][y] >= height[i][j]) {
-                        is_peak = 0;
+                    if ((x != i || y != j) && h[x][y] >= h[i][j]) {
+                        peak = 0;
                         break;
                     }
                 }
-                if (!is_peak)
+                if (!peak)
                     break;
             }
-            if (is_peak) {
-                peaks[peak_count][0] = height[i][j];
-                peaks[peak_count][1] = i;
-                peaks[peak_count][2] = j;
-                peak_count++;
+            if (peak) {
+                p.push_back({h[i][j], i, j});
             }
         }
     }
 
-    cout << peak_count << '\n';
-    for (int i = 0; i < peak_count; i++) {
-        cout << peaks[i][0] << ' ' << peaks[i][1] << ' ' << peaks[i][2] << '\n';
+    cout << p.size() << '\n';
+    for (int i = 0; i < p.size(); i++) {
+        cout << p[i][0] << ' ' << p[i][1] << ' ' << p[i][2] << '\n';
     }
 
 }

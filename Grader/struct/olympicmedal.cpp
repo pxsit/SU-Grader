@@ -10,7 +10,7 @@ struct olym {
 int main() {
     int n;
     cin >> n;
-    struct olym c[n];
+    vector<olym> c(n);
     for (int i = 0; i < n; i++) {
         cin >> c[i].country >> c[i].gold >> c[i].silv >> c[i].bron;
     }
@@ -18,10 +18,10 @@ int main() {
     for (int t = 0; t < 100; t++) {
         int code;
         cin >> code;
-        int cId = -1;
+        int cid = -1;
         for (int i = 0; i < n; i++) {
             if (code == c[i].country)
-                cId = i;
+                cid = i;
         }
         if (code == 1001) {
             int mG = 0;
@@ -80,8 +80,8 @@ int main() {
         } else if (code < -1) {
             cout << "good bye";
             break;
-        } else if (cId != -1) {
-            cout << c[cId].gold << ' ' << c[cId].silv << ' ' << c[cId].bron << ' ' << c[cId].gold + c[cId].silv + c[cId].bron;
+        } else if (cid != -1) {
+            cout << c[cid].gold << ' ' << c[cid].silv << ' ' << c[cid].bron << ' ' << c[cid].gold + c[cid].silv + c[cid].bron;
         } else {
             cout << "invalid code";
         }

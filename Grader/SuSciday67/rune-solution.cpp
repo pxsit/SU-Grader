@@ -1,35 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 1000000;
-
-int N, K;
-string S;
-int A[maxn];
-int B[maxn];
-
 int main() {
+    int n, k;
+    string s;
+    cin >> n >> k >> s;
+    vector<int> a(n), b(n);
 
-    cin >> N >> K >> S;
-
-    for (int i = 0; i < N; i++) {
-        A[i] = S[i] - 'A';
+    for (int i = 0; i < n; i++) {
+        a[i] = s[i] - 'A';
     }
     for (int j = 30; j >= 0; j--) {
-        if (K & (1 << j)) {
-            for (int i = 0; i < N; i++) {
-                int o = (i - (1 << j)) % N;
+        if (k & (1 << j)) {
+            for (int i = 0; i < n; i++) {
+                int o = (i - (1 << j)) % n;
                 if (o < 0) {
-                    o += N;
+                    o += n;
                 }
-                B[o] = A[i] ^ A[o];
+                b[o] = a[i] ^ a[o];
             }
-            memcpy(A, B, sizeof(A));
+            a = b;
         }
     }
 
-    for (int i = 0; i < N; i++) {
-        S[i] = A[i] + 'A';
+    for (int i = 0; i < n; i++) {
+        s[i] = a[i] + 'A';
     }
-    cout << S << '\n';
+    cout << s << '\n';
 }

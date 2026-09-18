@@ -3,8 +3,7 @@ using namespace std;
 int main() {
     int n, m;
     cin >> n;
-    int g[n];
-    int b[n];
+    vector<int> g(n), b(n);
     int a = 0;
     for (int i = 0; i < n; i++) {
         cin >> g[i];

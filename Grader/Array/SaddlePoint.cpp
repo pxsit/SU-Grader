@@ -1,56 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int row, col;
-    int ifrow = 0;
-    int ifcol = 0;
-    cin >> row >> col;
-    int num[row + 1][col + 1];
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            cin >> num[i][j];
+    int r, c;
+    int ar = 0, ac = 0;
+    cin >> r >> c;
+    vector<vector<int>> a(r, vector<int>(c));
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> a[i][j];
         }
     }
 
-    int maxrow[1000], minrow[1000], maxcol[1000], mincol[1000];
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (j == 0 || num[i][j] > maxrow[i]) {
-                maxrow[i] = num[i][j];
+    vector<int> xr(r), nr(r), xc(c), nc(c);
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            if (j == 0 || a[i][j] > xr[i]) {
+                xr[i] = a[i][j];
             }
-            if (j == 0 || num[i][j] < minrow[i]) {
-                minrow[i] = num[i][j];
+            if (j == 0 || a[i][j] < nr[i]) {
+                nr[i] = a[i][j];
             }
         }
     }
-    for (int i = 0; i < col; i++) {
-        for (int j = 0; j < row; j++) {
-            if (j == 0 || num[j][i] > maxcol[i]) {
-                maxcol[i] = num[j][i];
+    for (int i = 0; i < c; i++) {
+        for (int j = 0; j < r; j++) {
+            if (j == 0 || a[j][i] > xc[i]) {
+                xc[i] = a[j][i];
             }
-            if (j == 0 || num[j][i] < mincol[i]) {
-                mincol[i] = num[j][i];
+            if (j == 0 || a[j][i] < nc[i]) {
+                nc[i] = a[j][i];
             }
         }
     }
 
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (num[i][j] == maxrow[i] && num[i][j] == mincol[j]) {
-                cout << "(" << i << ", " << j << ") = " << num[i][j] << '\n';
-                ifrow = 1;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            if (a[i][j] == xr[i] && a[i][j] == nc[j]) {
+                cout << "(" << i << ", " << j << ") = " << a[i][j] << '\n';
+                ar = 1;
             }
         }
     }
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (num[i][j] == maxcol[j] && num[i][j] == minrow[i]) {
-                cout << "(" << i << ", " << j << ") = " << num[i][j] << '\n';
-                ifcol = 1;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            if (a[i][j] == xc[j] && a[i][j] == nr[i]) {
+                cout << "(" << i << ", " << j << ") = " << a[i][j] << '\n';
+                ac = 1;
             }
         }
     }
-    if (ifrow == 0 && ifcol == 0) {
+    if (ar == 0 && ac == 0) {
         cout << "None";
     }
 }

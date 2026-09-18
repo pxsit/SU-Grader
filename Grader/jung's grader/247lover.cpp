@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 int main() {
     int cy, cm, cd, ch, cmi, cs, n;
-    int month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    vector<int> month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     cin >> cy >> cm >> cd >> ch >> cmi >> cs;
     cin >> n;
-    int y[n], m[n], d[n], h[n], mi[n], s[n], mc[n];
-    long long int dd[n];
-    unsigned long long int ss[n];
+    vector<int> y(n), m(n), d(n), h(n), mi(n), s(n), mc(n);
+    vector<ll> dd(n);
+    vector<unsigned long long> ss(n);
     int leap = 0;
     for (int i = 0; i < n; i++) {
         cin >> y[i] >> m[i] >> d[i] >> h[i] >> mi[i] >> s[i];

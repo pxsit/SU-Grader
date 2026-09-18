@@ -8,9 +8,9 @@ int main() {
     int a = n;
     int b = n;
     for (int i = 0; i < n * 2; i++) {
-        int in;
-        cin >> in;
-        if (in % 2 == 0) {
+        int x;
+        cin >> x;
+        if (x % 2 == 0) {
             sa++;
             if (sa >= 3) {
                 b -= 3;
@@ -29,11 +29,11 @@ int main() {
         }
         if (a <= 0) {
             cout << "1" << '\n'
-                 << in;
+                 << x;
         }
         if (b <= 0) {
             cout << "0" << '\n'
-                 << in;
+                 << x;
         }
     }
 }

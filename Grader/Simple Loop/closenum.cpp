@@ -2,7 +2,7 @@
 using namespace std;
 int main() {
     int a, b, d;
-    int c = 2147483647;
+    int c = INT_MAX;
     cin >> a;
     for (int i = 0; i < 8; i++) {
         cin >> b;

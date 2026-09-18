@@ -1,33 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-unsigned long long int squared(unsigned long long int a) {
-    return a * a;
-}
-unsigned long long int cubed(unsigned long long int x) {
-    return x * x * x;
-}
 int main() {
-    unsigned long long int array[101];
-    unsigned long long int inputcount = 0;
+    vector<unsigned long long> a(101);
+    int n = 0;
     for (int i = 0; i < 100; i++) {
-        int tempinput;
-        cin >> tempinput;
-        if (tempinput == 0) {
+        int x;
+        cin >> x;
+        if (x == 0) {
             break;
         }
-        inputcount++;
-        array[i] = tempinput;
+        n++;
+        a[i] = x;
     }
-    unsigned long long int output[inputcount];
-    for (int i = 0; i < inputcount; i++) {
-        output[i] = 0;
+    vector<unsigned long long> out(n);
+    for (int i = 0; i < n; i++) {
+        out[i] = 0;
     }
-    for (int j = 0; j < inputcount; j++) {
-        output[j] = squared(array[j]) - array[j] + 1;
+    for (int j = 0; j < n; j++) {
+        out[j] = a[j] * a[j] - a[j] + 1;
     }
-    for (int i = 0; i < inputcount; i++) {
-        if (output[i] != 0) {
-            cout << "Y " << output[i] << '\n';
+    for (int i = 0; i < n; i++) {
+        if (out[i] != 0) {
+            cout << "Y " << out[i] << '\n';
         } else {
             cout << "N 0" << '\n';
         }

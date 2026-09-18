@@ -1,32 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-int MaxDup, MaxVal, CurDup, CurVal;
-int n;
-
 int main() {
+    int n;
+    int md = 0, mv = 0, cd = 0, cv = 0;
     cin >> n;
-    int NumSet[n];
+    vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        cin >> NumSet[i];
+        cin >> a[i];
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (NumSet[i] == NumSet[j]) {
-                CurDup++;
-                CurVal = NumSet[i];
+            if (a[i] == a[j]) {
+                cd++;
+                cv = a[i];
             }
-            if (CurDup > MaxDup) {
-                MaxDup = CurDup;
-                MaxVal = CurVal;
+            if (cd > md) {
+                md = cd;
+                mv = cv;
             }
-            if (CurVal > MaxVal && MaxDup == CurDup) {
-                MaxVal = CurVal;
+            if (cv > mv && md == cd) {
+                mv = cv;
             }
         }
-        CurDup = 0;
+        cd = 0;
     }
 
-    cout << MaxVal << '\n'
-         << MaxDup;
+    cout << mv << '\n'
+         << md;
 }

@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-int m, sum;
-
 int main() {
+    int m, sum = 0;
     cin >> m;
     for (int i = 1; i < m + 1; i++) {
 

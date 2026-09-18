@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-double AuctionPrice, SellingPrice, TotalCost, Land;
-
 int main() {
-    cin >> SellingPrice >> AuctionPrice >> Land;
+    double ap, sp, tc = 0, l;
+    cin >> sp >> ap >> l;
 
-    if (SellingPrice > AuctionPrice) {
+    if (sp > ap) {
 
-        TotalCost += (Land * SellingPrice * 0.02) + 40 + (0.005 * Land * AuctionPrice);
+        tc += (l * sp * 0.02) + 40 + (0.005 * l * ap);
     } else {
 
-        TotalCost += (Land * AuctionPrice * 0.02) + 40 + (0.005 * Land * AuctionPrice);
+        tc += (l * ap * 0.02) + 40 + (0.005 * l * ap);
     }
 
-    cout << TotalCost;
+    cout << tc;
 }

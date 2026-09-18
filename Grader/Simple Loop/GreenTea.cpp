@@ -1,32 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
-int Water[7], Sugar[7], LeftOver, Stacks;
-
 int main() {
+    vector<int> w(7), s(7);
+    int l, st;
     for (int i = 0; i < 7; i++) {
-        cin >> Water[i] >> Sugar[i];
+        cin >> w[i] >> s[i];
     }
 
     for (int i = 0; i < 7; i++) {
 
-        if (Water[i] / 250 > 0 && Sugar[i] / 15 > 0) {
-            if (Water[i] / 250 > Sugar[i] / 15) {
-                Stacks = Sugar[i] / 15;
-                cout << Sugar[i] / 15;
+        if (w[i] / 250 > 0 && s[i] / 15 > 0) {
+            if (w[i] / 250 > s[i] / 15) {
+                st = s[i] / 15;
+                cout << s[i] / 15;
             } else {
-                Stacks = Water[i] / 250;
-                cout << Water[i] / 250;
+                st = w[i] / 250;
+                cout << w[i] / 250;
             }
-            LeftOver = 0;
-            if (Water[i] % 250 > 0 || Water[i] - (250 * Stacks) > 0) {
+            l = 0;
+            if (w[i] % 250 > 0 || w[i] - (250 * st) > 0) {
                 cout << " water";
             }
 
         } else {
             cout << "0";
-            if (Water[i] > 0) {
+            if (w[i] > 0) {
                 cout << " water";
-                LeftOver = 1;
+                l = 1;
             }
         }
 

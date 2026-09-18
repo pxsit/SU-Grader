@@ -2,8 +2,7 @@
 using namespace std;
 int main() {
     int name[10][100];
-    int scorecon;
-    int check;
+    int scorecon, check;
     int score[10000] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     for (int i = 0; i <= 7; i++) {
         cin >> name[i];
@@ -11,12 +10,7 @@ int main() {
     cin >> scorecon;
     for (int j = 0; j <= scorecon - 1; j++) {
         cin >> check;
-
-        {
-            score[check - 1] = (score[check - 1] + 1);
-        }
-    }
-    for (int h = 0; h <= 7; h++) {
+        score[check - 1] = score[check - 1] + 1;
     }
     int out = score[0];
     for (int po = 1; po <= 7; po++) {

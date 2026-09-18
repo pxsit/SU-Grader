@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 int main() {
     int n;
     cin >> n;
-    long long int sum = 1;
-    long long int arr[n];
+    ll sum = 1;
+    vector<ll> arr(max(n, 1) + 1);
     arr[0] = 0;
     arr[1] = 1;
     for (int i = 2; i <= n; i++) {

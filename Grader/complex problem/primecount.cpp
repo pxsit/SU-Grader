@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int N, count = 0;
-    cin >> N;
+    int n, cnt = 0;
+    cin >> n;
 
-    int prime[N];
-    for (int i = 2; i < N; i++) {
-        prime[i] = 1;
+    vector<int> p(n);
+    for (int i = 2; i < n; i++) {
+        p[i] = 1;
     }
 
-    for (int p = 2; p * p <= N; p++) {
-        if (prime[p] == 1) {
-            for (int i = p * p; i < N; i += p) {
-                prime[i] = 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (p[i] == 1) {
+            for (int j = i * i; j < n; j += i) {
+                p[j] = 0;
             }
         }
     }
 
-    for (int i = 2; i < N; i++) {
-        if (prime[i] == 1) {
-            count++;
+    for (int i = 2; i < n; i++) {
+        if (p[i] == 1) {
+            cnt++;
         }
     }
 
-    cout << count;
+    cout << cnt;
 }

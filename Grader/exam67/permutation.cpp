@@ -20,9 +20,8 @@ int fac(int a) {
 int main() {
     int n;
     cin >> n;
-    struct numVal norm[12];
-    struct numVal perm[n];
-    int removedNfrom[n];
+    vector<numVal> norm(12);
+    vector<numVal> perm(n);
     int no = 0;
     if (n > 12)
         n = 12;
@@ -55,7 +54,6 @@ int main() {
         }
     }
     for (int i = 0; i < n; i++) {
-        removedNfrom[i] = 0;
         perm[i].let = ' ';
         perm[i].val = 0;
         cin >> perm[i].let;
@@ -71,7 +69,6 @@ int main() {
         no += fac(n - i - 1) * (perm[i].val);
         int ind = 0;
         for (int j = 0; j < 12; j++) {
-            char usedlet;
             if (perm[i].let == norm[j].let) {
                 ind = perm[i].val - 1;
                 break;

@@ -2,23 +2,20 @@
 using namespace std;
 
 int main() {
-    int all;
-    int max;
+    int all, cap;
     int mmax = 0;
     int fmax = 0;
     int num = 0;
-    int pass[10000];
-    int team[10000];
-
     int gender, score1, score2;
-    cin >> all >> max;
+    cin >> all >> cap;
+    vector<int> pass(all), team(all);
 
     for (int i = 1; i <= all; i++) {
         cin >> gender >> score1 >> score2;
 
         if (score1 >= 9 && score2 >= 9) {
 
-            if ((gender == 1 && mmax < max) || (mmax < max && fmax >= max)) {
+            if ((gender == 1 && mmax < cap) || (mmax < cap && fmax >= cap)) {
                 mmax++;
                 pass[num] = i;
                 team[num] = 1;
@@ -26,19 +23,19 @@ int main() {
 
             }
 
-            else if (gender == 2 && fmax < max || (mmax >= max && fmax < max)) {
+            else if (gender == 2 && fmax < cap || (mmax >= cap && fmax < cap)) {
                 fmax++;
                 pass[num] = i;
                 team[num] = 2;
                 num++;
             }
-        } else if (score1 >= 9 && mmax < max) {
+        } else if (score1 >= 9 && mmax < cap) {
             mmax++;
             pass[num] = i;
             team[num] = 1;
             num++;
 
-        } else if (score2 >= 9 && fmax < max) {
+        } else if (score2 >= 9 && fmax < cap) {
             fmax++;
             pass[num] = i;
             team[num] = 2;

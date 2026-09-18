@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-int x;
-
 int main() {
+    int x;
     cin >> x;
     if (x >= 100) {
         cout << "Aromatherapy candle is Fire";

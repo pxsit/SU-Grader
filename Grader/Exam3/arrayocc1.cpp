@@ -1,37 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
-int A[100001];
 int main() {
-    int N, K, x;
-    cin >> N >> K;
-    for (int i = 1; i <= N; i++) {
-        A[i] = 0;
-    }
-    int success = 0;
-    int outBound = 0;
+    int n, m, x;
+    cin >> n >> m;
+    vector<int> a(n + 1);
+    int cnt = 0;
+    int out = 0;
     int dup = 0;
-    for (int i = 0; i < K; ++i) {
+    for (int i = 0; i < m; i++) {
         cin >> x;
-        if (x < 1 || x > N)
-            ++outBound;
+        if (x < 1 || x > n)
+            out++;
         else {
-            if (A[x] > 0)
-                ++dup;
+            if (a[x] > 0)
+                dup++;
             else
-                ++success;
-            ++A[x];
+                cnt++;
+            a[x]++;
         }
     }
-    cout << success << '\n'
-         << outBound << '\n'
+    cout << cnt << '\n'
+         << out << '\n'
          << dup << '\n';
-    int maxDup = 0;
-    for (int i = 1; i <= N; ++i) {
-        if (A[i] > maxDup)
-            maxDup = A[i];
+    int mx = 0;
+    for (int i = 1; i <= n; i++) {
+        if (a[i] > mx)
+            mx = a[i];
     }
-    for (int i = 1; i <= N; ++i) {
-        if (A[i] == maxDup)
+    for (int i = 1; i <= n; i++) {
+        if (a[i] == mx)
             cout << i << ' ';
     }
 }

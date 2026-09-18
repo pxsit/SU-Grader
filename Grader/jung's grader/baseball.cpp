@@ -1,47 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-int max = 1001;
-int tos = -1;
-int a[1001];
-void push(int x) {
-    if (tos < max) {
-        tos++;
-        a[tos] = x;
-    }
-}
-void pop() {
-    if (tos >= 0) {
-        tos--;
-    }
-}
-int get(int x) {
-    return (a[tos - x]);
-}
 int main() {
     int n;
     cin >> n;
-    char P[51];
+    vector<int> a(1002);
+    int tos = -1;
     for (int i = 0; i < n; i++) {
-        cin >> P;
-        if (P[0] == 'C') {
-            pop();
-        } else if (P[0] == 'D') {
-            push(get(0) * 2);
-        } else if (P[0] == '+') {
-            int gg = get(0) + get(1);
-            push(gg);
+        string p;
+        cin >> p;
+        if (p[0] == 'C') {
+            if (tos >= 0) {
+                tos--;
+            }
+        } else if (p[0] == 'D') {
+            int x = a[tos] * 2;
+            if (tos < 1001) {
+                tos++;
+                a[tos] = x;
+            }
+        } else if (p[0] == '+') {
+            int x = a[tos] + a[tos - 1];
+            if (tos < 1001) {
+                tos++;
+                a[tos] = x;
+            }
         } else {
-            int val = 0;
-            for (int i = 0; P[i]; i++) {
-                if (P[i] >= '0' && P[i] <= '9') {
-                    val *= 10;
-                    val += P[i] - '0';
+            int x = 0;
+            for (char c : p) {
+                if (c >= '0' && c <= '9') {
+                    x *= 10;
+                    x += c - '0';
                 }
             }
-
-            if (P[0] == '-')
-                val *= -1;
-            push(val);
+            if (p[0] == '-') {
+                x *= -1;
+            }
+            if (tos < 1001) {
+                tos++;
+                a[tos] = x;
+            }
         }
     }
 

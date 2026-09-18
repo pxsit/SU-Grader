@@ -2,31 +2,31 @@
 using namespace std;
 int main() {
 
-    int a, b;
-    cin >> a >> b;
-    int array[a][2];
-    float avgarray[a];
-    for (int i = 0; i < a; i++) {
-        int max = INT_MIN;
-        int min = INT_MAX;
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> a(n, vector<int>(2));
+    vector<float> av(n);
+    for (int i = 0; i < n; i++) {
+        int mx = INT_MIN;
+        int mn = INT_MAX;
         int sum = 0;
-        for (int j = 0; j < b; j++) {
-            int temp;
-            cin >> temp;
-            sum += temp;
-            if (temp > max) {
-                max = temp;
+        for (int j = 0; j < m; j++) {
+            int x;
+            cin >> x;
+            sum += x;
+            if (x > mx) {
+                mx = x;
             }
-            if (temp < min) {
-                min = temp;
+            if (x < mn) {
+                mn = x;
             }
         }
-        array[i][0] = min;
-        array[i][1] = max;
-        float avg = (float)sum / b;
-        avgarray[i] = avg;
+        a[i][0] = mn;
+        a[i][1] = mx;
+        float x = (float)sum / m;
+        av[i] = x;
     }
-    for (int i = 0; i < a; i++) {
-        cout << array[i][0] << ' ' << array[i][1] << ' ' << fixed << setprecision(2) << avgarray[i] << '\n';
+    for (int i = 0; i < n; i++) {
+        cout << a[i][0] << ' ' << a[i][1] << ' ' << fixed << setprecision(2) << av[i] << '\n';
     }
 }

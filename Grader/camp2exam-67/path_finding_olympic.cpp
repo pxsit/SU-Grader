@@ -1,93 +1,93 @@
 #include <bits/stdc++.h>
 using namespace std;
-void printMap(char map[100][100], int N) {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << map[i][j] << ' ';
+void printmap(const vector<vector<char>> &a, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << a[i][j] << ' ';
         }
         cout << '\n';
     }
 }
 
 int main() {
-    int N, nPoint;
-    cin >> N;
-    cin >> nPoint;
-    int points[nPoint][2];
-    for (int i = 0; i < nPoint; i++) {
-        cin >> points[i][0] >> points[i][1];
+    int n, np;
+    cin >> n;
+    cin >> np;
+    vector<vector<int>> p(np, vector<int>(2));
+    for (int i = 0; i < np; i++) {
+        cin >> p[i][0] >> p[i][1];
     }
 
-    for (int i = 0; i < nPoint; i++) {
-        if (points[i][0] < 0 || points[i][0] >= N || points[i][1] < 0 || points[i][1] >= N) {
+    for (int i = 0; i < np; i++) {
+        if (p[i][0] < 0 || p[i][0] >= n || p[i][1] < 0 || p[i][1] >= n) {
             cout << "Out of range" << '\n';
         }
     }
 
-    char map[100][100];
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            map[i][j] = '_';
+    vector<vector<char>> a(n, vector<char>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            a[i][j] = '_';
         }
     }
 
-    char currentChar = 'A';
-    for (int i = 0; i < nPoint - 1; i++) {
-        int r1 = points[i][0];
-        int c1 = points[i][1];
-        int r2 = points[i + 1][0];
-        int c2 = points[i + 1][1];
+    char c = 'A';
+    for (int i = 0; i < np - 1; i++) {
+        int r1 = p[i][0];
+        int c1 = p[i][1];
+        int r2 = p[i + 1][0];
+        int c2 = p[i + 1][1];
 
-        map[r1][c1] = currentChar;
+        a[r1][c1] = c;
 
         if (r1 != r2 && c1 != c2) {
             if (c1 < c2) {
                 for (int j = c1 + 1; j <= c2 - 1; j++) {
-                    map[r1][j] = '>';
+                    a[r1][j] = '>';
                 }
-                map[r1][c2] = (r1 < r2) ? 'v' : '^';
+                a[r1][c2] = (r1 < r2) ? 'v' : '^';
             } else {
                 for (int j = c1 - 1; j >= c2 + 1; j--) {
-                    map[r1][j] = '<';
+                    a[r1][j] = '<';
                 }
-                map[r1][c2] = (r1 < r2) ? 'v' : '^';
+                a[r1][c2] = (r1 < r2) ? 'v' : '^';
             }
             if (r1 < r2) {
                 for (int j = r1 + 1; j < r2; j++) {
-                    map[j][c2] = 'v';
+                    a[j][c2] = 'v';
                 }
             } else {
                 for (int j = r1 - 1; j > r2; j--) {
-                    map[j][c2] = '^';
+                    a[j][c2] = '^';
                 }
             }
         } else {
             if (r1 == r2) {
                 if (c1 < c2) {
                     for (int j = c1 + 1; j <= c2; j++) {
-                        map[r1][j] = '>';
+                        a[r1][j] = '>';
                     }
                 } else {
                     for (int j = c1 - 1; j >= c2; j--) {
-                        map[r1][j] = '<';
+                        a[r1][j] = '<';
                     }
                 }
             } else {
                 if (r1 < r2) {
                     for (int j = r1 + 1; j <= r2; j++) {
-                        map[j][c1] = 'v';
+                        a[j][c1] = 'v';
                     }
                 } else {
                     for (int j = r1 - 1; j >= r2; j--) {
-                        map[j][c1] = '^';
+                        a[j][c1] = '^';
                     }
                 }
             }
         }
 
-        currentChar++;
+        c++;
     }
 
-    map[points[nPoint - 1][0]][points[nPoint - 1][1]] = currentChar;
-    printMap(map, N);
+    a[p[np - 1][0]][p[np - 1][1]] = c;
+    printmap(a, n);
 }

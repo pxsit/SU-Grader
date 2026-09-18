@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int result[100000];
-    int max, all;
+    int cap, all;
     int score;
     int check = 0;
     int pass = 0;
-    cin >> all >> max;
+    cin >> all >> cap;
+    vector<int> result(all);
 
     for (int i = 0; i < all; i++) {
         check = 0;
@@ -16,7 +16,7 @@ int main() {
                 check++;
             }
         }
-        if (check >= 2 && pass < max) {
+        if (check >= 2 && pass < cap) {
             result[i] = 1;
             pass++;
         } else {

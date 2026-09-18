@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-int find(int ni) {
-    if (ni < 0) {
-        ni = 0 - ni;
-        ni = 10 - (ni % 10);
+int digit(int n) {
+    if (n < 0) {
+        n = 0 - n;
+        n = 10 - (n % 10);
     }
-    int final = ni % 10;
+    int d = n % 10;
 
-    return final;
+    return d;
 }
 
 int main() {
-    int in;
-    cin >> in;
-    for (int i = 0; i <= in - 1; i++) {
-        for (int j = 0; j <= in - 1; j++) {
+    int n;
+    cin >> n;
+    for (int i = 0; i <= n - 1; i++) {
+        for (int j = 0; j <= n - 1; j++) {
             if (j == 0) {
-                cout << find((in - i) % 10) << ' ';
-            } else if (i == j && (i != 0 && i != in - 1)) {
-                cout << find(in + i) << ' ';
+                cout << digit((n - i) % 10) << ' ';
+            } else if (i == j && (i != 0 && i != n - 1)) {
+                cout << digit(n + i) << ' ';
 
-            } else if (j == in - 1) {
-                cout << find((in + in - 1) - i + in - 1);
+            } else if (j == n - 1) {
+                cout << digit((n + n - 1) - i + n - 1);
             } else {
                 cout << "  ";
             }

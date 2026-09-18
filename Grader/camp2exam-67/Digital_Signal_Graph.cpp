@@ -1,81 +1,79 @@
 #include <bits/stdc++.h>
 using namespace std;
-void ctob(char c, char *binary) {
+string bits(char c) {
+    string s;
     for (int i = 7; i >= 0; i--) {
-        binary[7 - i] = ((c & (1 << i)) ? '1' : '0');
+        s += (c & (1 << i)) ? '1' : '0';
     }
-    binary[8] = '\0';
+    return s;
 }
 
 int main() {
-    char string[10000];
-    char binary_string[80000] = "";
+    string s;
     int n;
-    cin >> string;
+    cin >> s;
     cin >> n;
 
-    int needs_conversion = 0;
-    for (int i = 0; i < strlen(string); i++) {
-        if (string[i] != '0' && string[i] != '1') {
-            needs_conversion = 1;
+    int conv = 0;
+    for (int i = 0; i < (int)s.size(); i++) {
+        if (s[i] != '0' && s[i] != '1') {
+            conv = 1;
             break;
         }
     }
 
-    if (needs_conversion) {
-        for (int i = 0; i < strlen(string); i++) {
-            char binary[9];
-            ctob(string[i], binary);
-            strcat(binary_string, binary);
+    if (conv) {
+        string t;
+        for (int i = 0; i < (int)s.size(); i++) {
+            t += bits(s[i]);
         }
-        strcpy(string, binary_string);
+        s = t;
     }
 
-    strcat(string, "9");
+    s += '9';
 
-    int countSame = 1;
-    char signal[100000];
-    int index = 0;
+    int same = 1;
+    string sig;
+    int idx = 0;
 
-    for (int i = 0; i < strlen(string) - 1; i++) {
-        if (string[i] == string[i + 1]) {
-            countSame++;
+    for (int i = 0; i < (int)s.size() - 1; i++) {
+        if (s[i] == s[i + 1]) {
+            same++;
         } else {
-            if (string[i] == '1') {
-                for (int j = 0; j < (n * countSame) - (countSame - 1); j++) {
-                    signal[index + j] = 'X';
+            if (s[i] == '1') {
+                int len = n * same - (same - 1);
+                for (int j = 0; j < len; j++) {
+                    sig += 'X';
                 }
-                index += (n * countSame) - (countSame - 1);
+                idx += len;
             } else {
-                for (int j = 0; j < ((n * countSame) - (countSame - 1)) - 2; j++) {
-                    signal[index + j] = '_';
+                int len = n * same - (same - 1) - 2;
+                for (int j = 0; j < len; j++) {
+                    sig += '_';
                 }
-                index += ((n * countSame) - (countSame - 1)) - 2;
+                idx += len;
             }
-            countSame = 1;
+            same = 1;
         }
     }
 
-    char tempSig[100000];
-    strcpy(tempSig, signal);
+    string t = sig;
 
     int key = 0;
-    if (string[0] == '0') {
+    if (s[0] == '0') {
         key++;
-        signal[0] = 'X';
-        for (int i = 1; i < strlen(tempSig) + 1; i++)
-            signal[i] = tempSig[i - 1];
+        sig = 'X' + t;
     }
 
-    for (int i = 0; i < index + key; i++)
-        cout << signal[i];
+    for (int i = 0; i < idx + key; i++)
+        cout << sig[i];
 
-    int med[100000];
-    strcat(signal, "9");
-    for (int i = 0; i < index + key; i++) {
-        if (signal[i] == 'X' && signal[i + 1] == '_')
+    vector<char> med(idx + key);
+    sig += '9';
+    for (int i = 0; i < idx + key; i++) {
+        if (sig[i] == 'X' && sig[i + 1] == '_')
             med[i] = 'X';
-        else if (signal[i] == 'X' && signal[i - 1] == '_')
+        else if (sig[i] == 'X' && sig[i - 1] == '_')
             med[i] = 'X';
         else
             med[i] = '_';
@@ -83,20 +81,20 @@ int main() {
 
     cout << '\n';
     for (int j = 0; j < n - 2; j++) {
-        for (int i = 0; i < index + key; i++) {
+        for (int i = 0; i < idx + key; i++) {
             cout << med[i];
         }
         cout << '\n';
     }
 
-    for (int i = 0; i < index + key; i++) {
-        if ((signal[i] == 'X' && signal[i + 1] == '_') || (signal[i] == 'X' && signal[i - 1] == '_'))
-            cout << "X";
+    for (int i = 0; i < idx + key; i++) {
+        if ((sig[i] == 'X' && sig[i + 1] == '_') || (sig[i] == 'X' && sig[i - 1] == '_'))
+            cout << 'X';
         else {
-            if (signal[i] == 'X')
-                cout << "_";
+            if (sig[i] == 'X')
+                cout << '_';
             else
-                cout << "X";
+                cout << 'X';
         }
     }
 }

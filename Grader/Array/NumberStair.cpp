@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, m;
-
 int main() {
+    int n;
     cin >> n;
-    int array[n];
+    vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        cin >> array[i];
+        cin >> a[i];
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < i + 1; j++) {
-            cout << array[n - i - 1];
+            cout << a[n - i - 1];
         }
 
         cout << '\n';

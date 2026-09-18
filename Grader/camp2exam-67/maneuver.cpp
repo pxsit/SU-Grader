@@ -1,36 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
+typedef long long ll;
 
-ll minDiff = 1000000;
-ll bestSet1[100], bestSet2[100];
-ll bestSize1, bestSize2;
+ll md = 1000000;
+vector<ll> b1(100), b2(100);
+ll s1, s2;
 
-void findBestSplit(ll arr[], ll n, ll currentIndex, ll set1[], ll set2[], ll size1, ll size2, ll sum1, ll sum2) {
-    if (currentIndex == n) {
-        if ((size1 == n / 2 && size2 == n / 2) || (size1 == n / 2 + 1 && size2 == n / 2)) {
-            ll diff = abs(sum1 - sum2);
-            if (diff < minDiff) {
-                minDiff = diff;
-                bestSize1 = size1;
-                bestSize2 = size2;
-                for (ll i = 0; i < size1; i++)
-                    bestSet1[i] = set1[i];
-                for (ll i = 0; i < size2; i++)
-                    bestSet2[i] = set2[i];
+void split(const vector<ll> &a, ll n, ll p, vector<ll> &a1, vector<ll> &a2, ll z1, ll z2, ll x1, ll x2) {
+    if (p == n) {
+        if ((z1 == n / 2 && z2 == n / 2) || (z1 == n / 2 + 1 && z2 == n / 2)) {
+            ll d = abs(x1 - x2);
+            if (d < md) {
+                md = d;
+                s1 = z1;
+                s2 = z2;
+                for (ll i = 0; i < z1; i++)
+                    b1[i] = a1[i];
+                for (ll i = 0; i < z2; i++)
+                    b2[i] = a2[i];
             }
         }
         return;
     }
 
-    if (size1 < n / 2 + 1) {
-        set1[size1] = arr[currentIndex];
-        findBestSplit(arr, n, currentIndex + 1, set1, set2, size1 + 1, size2, sum1 + arr[currentIndex], sum2);
+    if (z1 < n / 2 + 1) {
+        a1[z1] = a[p];
+        split(a, n, p + 1, a1, a2, z1 + 1, z2, x1 + a[p], x2);
     }
 
-    if (size2 < n / 2) {
-        set2[size2] = arr[currentIndex];
-        findBestSplit(arr, n, currentIndex + 1, set1, set2, size1, size2 + 1, sum1, sum2 + arr[currentIndex]);
+    if (z2 < n / 2) {
+        a2[z2] = a[p];
+        split(a, n, p + 1, a1, a2, z1, z2 + 1, x1, x2 + a[p]);
     }
 }
 
@@ -38,22 +38,22 @@ int main() {
     ll n;
     cin >> n;
 
-    ll arr[n];
+    vector<ll> a(n);
     for (ll i = 0; i < n; i++)
-        cin >> arr[i];
+        cin >> a[i];
 
-    ll set1[n], set2[n];
-    findBestSplit(arr, n, 0, set1, set2, 0, 0, 0, 0);
+    vector<ll> a1(n), a2(n);
+    split(a, n, 0, a1, a2, 0, 0, 0, 0);
 
-    for (ll i = 0; i < bestSize2; i++) {
-        cout << bestSet2[i];
-        if (i < bestSize2 - 1)
+    for (ll i = 0; i < s2; i++) {
+        cout << b2[i];
+        if (i < s2 - 1)
             cout << ' ';
     }
     cout << '\n';
-    for (ll i = 0; i < bestSize1; i++) {
-        cout << bestSet1[i];
-        if (i < bestSize1 - 1)
+    for (ll i = 0; i < s1; i++) {
+        cout << b1[i];
+        if (i < s1 - 1)
             cout << ' ';
     }
 }

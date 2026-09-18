@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef struct {
+struct Tram {
     int type;
     int passengers;
     int isOperational;
-} Tram;
+};
 
 int main() {
     int n;
     cin >> n;
-    int MaxCap[3] = {11, 14, 27};
-
-    Tram trams[n];
+    vector<int> maxcap = {11, 14, 27};
+    vector<Tram> trams(n);
 
     for (int i = 0; i < n; i++) {
         cin >> trams[i].type;
@@ -36,9 +35,9 @@ int main() {
 
         if (trams[index].isOperational == 1) {
             if (PassCount > 0) {
-                if (trams[index].passengers + PassCount >= MaxCap[trams[index].type - 1]) {
-                    trams[index].passengers = MaxCap[trams[index].type - 1];
-                } else if (trams[index].passengers + PassCount < MaxCap[trams[index].type - 1]) {
+                if (trams[index].passengers + PassCount >= maxcap[trams[index].type - 1]) {
+                    trams[index].passengers = maxcap[trams[index].type - 1];
+                } else if (trams[index].passengers + PassCount < maxcap[trams[index].type - 1]) {
                     trams[index].passengers += PassCount;
                 }
             } else if (PassCount < 0) {

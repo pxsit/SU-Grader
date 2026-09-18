@@ -1,31 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct Student {
-    char id[6];
+    string id;
     int score;
 };
 
 int main() {
-    int N, i, total_score = 0;
-    struct Student students[10000];
+    int n, total_score = 0;
 
-    cin >> N;
+    cin >> n;
+    vector<Student> students(n);
 
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> students[i].id >> students[i].score;
         total_score += students[i].score;
     }
 
-    int average = total_score / N;
+    int average = total_score / n;
 
     int count = 0;
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         if (students[i].score > average) {
             count++;
         }
     }
     cout << count << '\n';
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         if (students[i].score > average) {
             cout << students[i].id << '\n';
         }

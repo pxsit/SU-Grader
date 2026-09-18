@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int date, time, tz, day, month, year, hour, min;
+    int date, time, tz, day, month, year, hour, minute;
     cin >> date;
     cin >> time;
     cin >> tz;
     year = date % 10000;
     month = (date / 10000) % 100;
     day = date / 1000000;
-    min = time % 100;
+    minute = time % 100;
     hour = time / 100;
     if (tz < 0) {
         hour -= abs(tz);
@@ -82,9 +82,9 @@ int main() {
         cout << hour << " :";
     }
 
-    if (min < 10) {
-        cout << " 0" << min;
+    if (minute < 10) {
+        cout << " 0" << minute;
     } else {
-        cout << ' ' << min;
+        cout << ' ' << minute;
     }
 }

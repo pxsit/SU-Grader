@@ -66,11 +66,11 @@ void flipPieces(char arr[8][8], int x, int y, char player, char opponent) {
 
 int main() {
     char arr[8][8];
-    char string[8 + 1];
+    string s;
     for (int i = 0; i < 8; i++) {
-        cin >> string;
+        cin >> s;
         for (int j = 0; j < 8; j++) {
-            arr[i][j] = string[j];
+            arr[i][j] = s[j];
         }
     }
 
@@ -95,14 +95,14 @@ int main() {
         }
     }
 
-    int blackCount = 0;
-    int whiteCount = 0;
+    int bc = 0;
+    int wc = 0;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (arr[i][j] == 'B')
-                blackCount++;
+                bc++;
             else if (arr[i][j] == 'W')
-                whiteCount++;
+                wc++;
         }
     }
 
@@ -113,9 +113,9 @@ int main() {
         cout << '\n';
     }
 
-    if (blackCount > whiteCount)
+    if (bc > wc)
         cout << "black wins";
-    else if (whiteCount > blackCount)
+    else if (wc > bc)
         cout << "white wins";
     else
         cout << "draw";

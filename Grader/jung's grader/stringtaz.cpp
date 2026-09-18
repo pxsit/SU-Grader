@@ -4,7 +4,7 @@ int main() {
     int n;
     unsigned long long b, num1 = 0, num2 = 1, num3 = 2;
     cin >> n >> b;
-    unsigned long long a[n], an[n];
+    vector<unsigned long long> a(n), an(n);
     a[0] = 1;
     for (int i = 1; i < n; i++) {
         num3 = num2 * 2 + num1;

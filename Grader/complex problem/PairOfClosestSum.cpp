@@ -1,23 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-int check(int wanted, int n1, int n2) {
-    int result1 = n1 + n2;
-    int final = wanted - result1;
-    if (final < 0) {
-        final = 0 - final;
+int diff(int w, int a, int b) {
+    int d = w - a - b;
+    if (d < 0) {
+        d = 0 - d;
     }
-    return final;
+    return d;
 }
-int dif(int m1, int m2) {
-    int post = m1 - m2;
-    if (post < 0) {
-        post = 0 - post;
+int gap(int a, int b) {
+    int d = a - b;
+    if (d < 0) {
+        d = 0 - d;
     }
-    return post;
+    return d;
 }
 
 int main() {
-    int all[1000];
+    vector<int> a(1000);
     int pair1;
     int pair2;
     int last;
@@ -25,26 +24,26 @@ int main() {
     int want, count;
     cin >> want >> count;
     for (int i = 0; i <= count - 1; i++) {
-        cin >> all[i];
+        cin >> a[i];
     }
     for (int i = 0; i <= count - 1; i++) {
         for (int j = 0; j <= count - 1; j++) {
-            if (all[i] != all[j]) {
-                if (last > check(want, all[i], all[j])) {
-                    last = check(want, all[i], all[j]);
-                    pair1 = all[i];
-                    pair2 = all[j];
+            if (a[i] != a[j]) {
+                if (last > diff(want, a[i], a[j])) {
+                    last = diff(want, a[i], a[j]);
+                    pair1 = a[i];
+                    pair2 = a[j];
                 }
 
                 else if (first == 1) {
-                    last = check(want, all[i], all[j]);
-                    pair1 = all[i];
-                    pair2 = all[j];
+                    last = diff(want, a[i], a[j]);
+                    pair1 = a[i];
+                    pair2 = a[j];
                     first = 0;
-                } else if (last == check(want, all[i], all[j])) {
-                    if (dif(pair1, pair2) > (dif(all[i], all[j]))) {
-                        pair1 = all[i];
-                        pair2 = all[j];
+                } else if (last == diff(want, a[i], a[j])) {
+                    if (gap(pair1, pair2) > gap(a[i], a[j])) {
+                        pair1 = a[i];
+                        pair2 = a[j];
                     }
                 }
             }

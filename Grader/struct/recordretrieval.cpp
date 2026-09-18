@@ -1,26 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct Student {
-    char id[9];
-    char name[31];
-    char surname[51];
+    string id, name, surname;
     int year;
 };
 
 int main() {
-    int N, Y, i;
-    struct Student students[20000];
+    int n, y;
 
-    cin >> N;
+    cin >> n;
+    vector<Student> students(n);
 
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> students[i].id >> students[i].name >> students[i].surname >> students[i].year;
     }
-    cin >> Y;
+    cin >> y;
 
     int found = 0;
-    for (i = 0; i < N; i++) {
-        if (students[i].year == Y) {
+    for (int i = 0; i < n; i++) {
+        if (students[i].year == y) {
             cout << students[i].id << ' ' << students[i].name << ' ' << students[i].surname << '\n';
             found = 1;
         }

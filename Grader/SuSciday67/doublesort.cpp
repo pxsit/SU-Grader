@@ -4,9 +4,8 @@ int main() {
     int row, col;
     cin >> row >> col;
 
-    int array[100][100];
-    int colOrder[100];
-    int sum[100] = {0};
+    vector<vector<int>> array(row, vector<int>(col));
+    vector<int> colOrder(col), sum(col);
 
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {

@@ -3,21 +3,22 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    long long int sum = 0, max, min;
+    typedef long long ll;
+    ll sum = 0, mx, mn;
     for (int i = 0; i < n; i++) {
-        long long int x;
+        ll x;
         cin >> x;
         sum += x;
         if (i == 0) {
-            max = x;
-            min = x;
+            mx = x;
+            mn = x;
         }
-        if (x > max) {
-            max = x;
+        if (x > mx) {
+            mx = x;
         }
-        if (x < min) {
-            min = x;
+        if (x < mn) {
+            mn = x;
         }
     }
-    cout << max - min << ' ' << (double)sum / n;
+    cout << mx - mn << ' ' << (double)sum / n;
 }

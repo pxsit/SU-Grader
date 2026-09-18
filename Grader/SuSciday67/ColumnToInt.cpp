@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-int Converter(const char *name) {
+int converter(const string &name) {
     int n = 0;
-    int length = strlen(name);
+    int length = name.size();
     for (int i = 0; i < length; i++) {
         char ch = name[i];
         int value;
@@ -22,8 +22,8 @@ int Converter(const char *name) {
 }
 
 int main() {
-    char name[10];
+    string name;
     cin >> name;
-    int result = Converter(name);
+    int result = converter(name);
     cout << result << '\n';
 }

@@ -1,23 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int N, K, i, vote, max_votes = 0, winner;
-    cin >> N >> K;
-    int votes[N];
-    for (i = 0; i < N; i++) {
-        votes[i] = 0;
+    int n, k, x, mx = 0, w;
+    cin >> n >> k;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        v[i] = 0;
     }
-    for (i = 0; i < K; i++) {
-        cin >> vote;
-        votes[vote - 1]++;
+    for (int i = 0; i < k; i++) {
+        cin >> x;
+        v[x - 1]++;
     }
 
-    for (i = 0; i < N; i++) {
-        if (votes[i] > max_votes) {
-            max_votes = votes[i];
-            winner = i + 1;
+    for (int i = 0; i < n; i++) {
+        if (v[i] > mx) {
+            mx = v[i];
+            w = i + 1;
         }
     }
-    cout << winner << '\n';
-    cout << max_votes << '\n';
+    cout << w << '\n';
+    cout << mx << '\n';
 }

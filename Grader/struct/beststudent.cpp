@@ -1,31 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int max_students = 100;
-
 struct Student {
-    char id[9];
-    char name[31];
-    char surname[51];
+    string id, name, surname;
     float gpa;
 };
 
 int main() {
-    int N, i;
-    struct Student students[max_students];
-    struct Student highest_gpa_student;
+    int n;
 
-    cin >> N;
+    cin >> n;
+    vector<Student> students(n);
 
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> students[i].id >> students[i].name >> students[i].surname >> students[i].gpa;
     }
 
-    highest_gpa_student = students[0];
-    for (i = 1; i < N; i++) {
-        if (students[i].gpa > highest_gpa_student.gpa) {
-            highest_gpa_student = students[i];
+    Student best = students[0];
+    for (int i = 1; i < n; i++) {
+        if (students[i].gpa > best.gpa) {
+            best = students[i];
         }
     }
 
-    cout << highest_gpa_student.id << ' ' << highest_gpa_student.name << ' ' << highest_gpa_student.surname << ' ' << fixed << setprecision(2) << highest_gpa_student.gpa << '\n';
+    cout << best.id << ' ' << best.name << ' ' << best.surname << ' ' << fixed << setprecision(2) << best.gpa << '\n';
 }

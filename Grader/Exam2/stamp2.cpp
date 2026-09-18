@@ -5,7 +5,7 @@ int main() {
     int id1, id2, id3;
     int v1, v2, v3;
     int t1, t2, t3;
-    int all = 0, minus = 0, stamp = 0;
+    int all = 0, sub = 0, stamp = 0;
     cin >> id1;
     cin >> t1;
     cin >> v1;
@@ -24,29 +24,29 @@ int main() {
             if (t1 == 1) {
                 stamp += v1;
             } else {
-                minus -= v1;
+                sub -= v1;
                 all -= v1;
             }
-            minus += b;
+            sub += b;
         } else if (a == id2) {
             if (t2 == 1) {
                 stamp += v2;
             } else {
-                minus -= v2;
+                sub -= v2;
                 all -= v2;
             }
-            minus += b;
+            sub += b;
         } else if (a == id3) {
             if (t3 == 1) {
                 stamp += v3;
             } else {
-                minus -= v3;
+                sub -= v3;
                 all -= v3;
             }
-            minus += b;
+            sub += b;
         }
     }
-    sum = all - minus;
+    sum = all - sub;
     stamp += (sum / k);
     cout << all << '\n'
          << sum << '\n'

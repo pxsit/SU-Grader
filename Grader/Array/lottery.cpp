@@ -4,12 +4,12 @@ int main() {
     int a, b;
     int c = 0;
     cin >> a;
-    int buy[a];
+    vector<int> buy(a);
     for (int i = 0; i < a; i++) {
         cin >> buy[i];
     }
     cin >> b;
-    int lot[b];
+    vector<int> lot(b);
     for (int i = 0; i < b; i++) {
         cin >> lot[i];
     }

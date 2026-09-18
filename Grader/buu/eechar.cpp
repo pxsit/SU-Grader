@@ -1,27 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-
 int main() {
-    n = 55;
-    char Alpha[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    char Cypher[n];
-    int Digits[n];
-    for (int i = 0; i < n; i++) {
-        Digits[i] = 0;
+    string a = "abcdefghijklmnopqrstuvwxyz";
+    string s;
+    vector<int> d(55);
+    for (int i = 0; i < 55; i++) {
+        d[i] = 0;
     }
 
-    cin >> Cypher;
+    cin >> s;
     for (int i = 0; i < 26; i++) {
-        for (int j = 0; j < strlen(Cypher); j++) {
-            if (Cypher[j] == Alpha[i]) {
-                Digits[i]++;
+        for (int j = 0; j < s.size(); j++) {
+            if (s[j] == a[i]) {
+                d[i]++;
             }
         }
     }
-    for (int i = 0; i < n; i++) {
-        if (Digits[i] != 0) {
-            cout << Digits[i];
+    for (int i = 0; i < 55; i++) {
+        if (d[i] != 0) {
+            cout << d[i];
         }
     }
 }

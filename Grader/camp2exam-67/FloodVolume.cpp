@@ -3,26 +3,26 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    int max = 0;
+    int mx = 0;
 
-    int a[n];
+    vector<int> a(n);
     for (int i = 0; i < n; i++) {
         cin >> a[i];
-        if (a[i] > max)
-            max = a[i];
+        if (a[i] > mx)
+            mx = a[i];
     }
 
-    int array[max + 1][n + 1];
-    for (int i = 0; i < max + 1; i++) {
+    vector<vector<int>> g(mx + 1, vector<int>(n + 1));
+    for (int i = 0; i < mx + 1; i++) {
         for (int j = 0; j < n; j++) {
-            array[i][j] = 0;
+            g[i][j] = 0;
         }
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = a[i]; j >= 0; j--) {
             for (int k = 0; k < 1; k++) {
-                array[j][i] = 1;
+                g[j][i] = 1;
             }
         }
     }
@@ -36,8 +36,8 @@ int main() {
         if (l > r) {
             for (int j = r; j >= 0; j--) {
                 for (int k = kr; k >= kl; k--) {
-                    if (array[j][k] == 0) {
-                        array[j][k] = 2;
+                    if (g[j][k] == 0) {
+                        g[j][k] = 2;
                     }
                 }
             }
@@ -46,8 +46,8 @@ int main() {
         } else {
             for (int j = l; j >= 0; j--) {
                 for (int k = kl; k <= kr; k++) {
-                    if (array[j][k] == 0) {
-                        array[j][k] = 2;
+                    if (g[j][k] == 0) {
+                        g[j][k] = 2;
                     }
                 }
             }
@@ -55,13 +55,13 @@ int main() {
             l = a[kl];
         }
     }
-    int count = 0;
-    for (int i = max; i >= 0; i--) {
+    int cnt = 0;
+    for (int i = mx; i >= 0; i--) {
         for (int j = 0; j < n; j++) {
-            if (array[i][j] == 2) {
-                count++;
+            if (g[i][j] == 2) {
+                cnt++;
             }
         }
     }
-    cout << count;
+    cout << cnt;
 }
