@@ -10,11 +10,9 @@ int main() {
     vector<char> van(num);
     for (int i = 0; i <= num - 1; i++) {
         cin >> day;
-
         if ((B < A && B < C) || (B < A && B == C)) {
             B += day;
             van[i] = 'B';
-
         } else if (C < B && C < A) {
             C += day;
             van[i] = 'C';
